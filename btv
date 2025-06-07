@@ -1,0 +1,2543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Trust Ventures - Programs & Cart</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Optional custom styles if needed, but Tailwind handles most of it */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease-in-out; /* Smooth transition for accessibility changes */
+        }
+        /* Basic styling for scrollable content, if lists get very long */
+        .scrollable-content {
+            max-height: 500px; /* Adjust as needed */
+            overflow-y: auto;
+            padding-right: 1rem; /* Space for scrollbar */
+        }
+
+        /* Accessibility CSS Classes */
+        .grayscale-mode {
+            filter: grayscale(100%);
+        }
+        .high-contrast-mode {
+            background-color: #000 !important;
+            color: #FFF !important;
+            /* Ensure all text and backgrounds are adjusted for high contrast */
+        }
+        .high-contrast-mode button,
+        .high-contrast-mode input,
+        .high-contrast-mode select,
+        .high-contrast-mode textarea {
+            background-color: #333 !important;
+            color: #FFF !important;
+            border-color: #FFF !important;
+        }
+        .high-contrast-mode a {
+            color: #FFFF00 !important; /* Yellow for links */
+        }
+        /* Override specific bright backgrounds in high contrast mode */
+        .high-contrast-mode .bg-blue-50,
+        .high-contrast-mode .bg-purple-50,
+        .high-contrast-mode .bg-emerald-50,
+        .high-contrast-mode .bg-yellow-50,
+        .high-contrast-mode .bg-green-100,
+        .high-contrast-mode .bg-purple-100,
+        .high-contrast-mode .bg-emerald-100,
+        .high-contrast-mode .bg-blue-100,
+        .high-contrast-mode .bg-gray-50,
+        .high-contrast-mode .bg-white,
+        .high-contrast-mode .bg-pink-100, /* For MusiX */
+        .high-contrast-mode .bg-gray-100, /* For Doctrine */
+        .high-contrast-mode .bg-red-50, /* For Scholarship/Grant */
+        .high-contrast-mode .bg-cyan-50 { /* For Consultation */
+            background-color: #000 !important;
+            border-color: #FFF !important;
+        }
+        .high-contrast-mode .text-gray-800,
+        .high-contrast-mode .text-gray-900,
+        .high-contrast-mode .text-gray-700,
+        .high-contrast-mode .text-blue-800,
+        .high-contrast-mode .text-blue-700,
+        .high-contrast-mode .text-purple-800,
+        .high-contrast-mode .text-purple-700,
+        .high-contrast-mode .text-emerald-800,
+        .high-contrast-mode .text-emerald-700,
+        .high-contrast-mode .text-red-600,
+        .high-contrast-mode .text-yellow-800,
+        .high-contrast-mode .text-pink-800, /* For MusiX */
+        .high-contrast-mode .text-pink-700, /* For MusiX */
+        .high-contrast-mode .text-gray-600, /* For Doctrine */
+        .high-contrast-mode .text-red-800, /* For Scholarship/Grant */
+        .high-contrast-mode .text-cyan-800, /* For Consultation */
+        .high-contrast-mode .text-cyan-700 { /* For Consultation */
+            color: #FFF !important;
+        }
+        .high-contrast-mode .text-yellow-500,
+        .high-contrast-mode .text-yellow-400 {
+             color: #FFFF00 !important;
+        }
+        /* Specific overrides for current active state in high contrast */
+        .high-contrast-mode .active-category-btn,
+        .high-contrast-mode .active-toggle-btn {
+            background-color: #0000FF !important; /* Blue for active state */
+            color: #FFFF00 !important;
+            border-color: #FFFF00 !important;
+        }
+
+        .font-size-large {
+            font-size: 1.15em; /* 15% larger */
+        }
+        .font-size-xl {
+            font-size: 1.3em; /* 30% larger */
+        }
+        .font-size-xxl {
+            font-size: 1.5em; /* 50% larger */
+        }
+
+        /* Hero Section Specific Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-fadeInScale {
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .animate-bounceIn {
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInRight {
+            animation: slideInRight 0.7s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInLeft {
+            animation: slideInLeft 0.7s ease-out forwards;
+        }
+
+
+        /* Pattern for Hero Background */
+        .hero-pattern {
+            background-image: radial-gradient(#d9e2ff 1px, transparent 1px),
+                              radial-gradient(#d9e2ff 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+
+    <div id="app-container" class="bg-white shadow-xl rounded-2xl pt-6 px-6 pb-20 sm:p-8 lg:p-10 w-full max-w-4xl relative overflow-hidden">
+        <!-- Content will be dynamically loaded here by JavaScript -->
+    </div>
+
+    <!-- Accessibility Panel Button -->
+    <button id="accessibility-btn" class="fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-gray-400 z-50" aria-label="Accessibility Options">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Global shopping cart array (resets on page refresh)
+        let shoppingCart = [];
+        // Conceptual user status - will reset on page refresh
+        let isAffiliateSignedUp = false;
+
+        // Discount code state
+        let appliedDiscount = 0; // Stores the discount percentage (e.g., 0.10 for 10%)
+        let currentDiscountCode = ''; // Stores the code that was successfully applied
+
+        // New state for password-protected discount codes section
+        let isDiscountCodesUnlocked = false; // Tracks if the discount codes section is unlocked
+
+        // Accessibility State
+        let isGrayscaleActive = false;
+        let isHighContrastActive = false;
+        let fontSizeLevel = 0; // 0: normal, 1: large, 2: xl, 3: xxl
+
+        // Define available discount codes and their percentages
+        const discountCodes = {
+            'SAVE5': 0.05,  // 5% off
+            'SAVE10': 0.10, // 10% off
+            'SAVE20': 0.20, // 20% off
+            'BIGSAVE30': 0.30, // 30% off
+            'ULTIMATE50': 0.50, // 50% off
+            'AFFILIATE50': 0.50 // Special code, could be tied to isAffiliateSignedUp for future expansion
+        };
+
+        // --- DATA DEFINITIONS (ALL ARRAYS MUST BE DECLARED BEFORE OBJECTS THAT REFERENCE THEM) ---
+
+        // Residential Services Categories
+        const residentialServiceCategories = {
+            'Home Care & Maintenance': [
+                { id: 'rs-1', name: 'Standard Home Cleaning (Weekly)', description: 'Thorough cleaning for up to 3 beds/2 baths.', price: 75.00 },
+                { id: 'rs-2', name: 'Deep Cleaning Service', description: 'Intensive cleaning, perfect for seasonal refresh or move-in/out.', price: 180.00 },
+                { id: 'rs-10', name: 'Interior Painting (Per Room)', description: 'Professional painting for a fresh new look.', price: 300.00 },
+                { id: 'rs-13', name: 'Dryer Vent Cleaning', description: 'Reduces fire risk and improves dryer efficiency.', price: 80.00 },
+                { id: 'rs-14', name: 'Appliance Repair Diagnosis', description: 'Troubleshooting and assessment for faulty home appliances.', price: 70.00 },
+                { id: 'rs-17', name: 'Carpet & Upholstery Cleaning', description: 'Professional steam cleaning for carpets and furniture.', price: 150.00 },
+                { id: 'rs-18', name: 'Water Heater Flush & Check', description: 'Maintenance to extend water heater lifespan and efficiency.', price: 100.00 },
+            ],
+            'Outdoor & Lawn Care': [
+                { id: 'rs-5', name: 'Lawn Mowing & Edging (Bi-weekly)', description: 'Professional lawn care, including trimming and clean-up.', price: 50.00 },
+                { id: 'rs-12', name: 'Gutter Cleaning', description: 'Removal of debris to ensure proper water flow and prevent damage.', price: 60.00 },
+                { id: 'rs-16', name: 'Pressure Washing (Driveway/Patio)', description: 'Deep cleaning for exterior hard surfaces to remove grime and stains.', price: 120.00 },
+            ],
+            'Home Systems & Security': [
+                { id: 'rs-3', name: 'HVAC System Check & Tune-up', description: 'Seasonal inspection and maintenance for optimal performance.', price: 120.00 },
+                { id: 'rs-4', name: 'Emergency Plumbing Repair (Hourly)', description: 'Rapid response for leaks, clogs, or burst pipes.', price: 90.00 },
+                { id: 'rs-6', name: 'Smart Home Device Installation', description: 'Setup and integration of smart thermostats, lights, and security cameras.', price: 150.00 },
+                { id: 'rs-7', name: 'Window Cleaning (Exterior)', description: 'Sparkling clean windows for enhanced curb appeal.', price: 100.00 },
+                { id: 'rs-8', name: 'Pest Control Treatment', description: 'Effective treatment for common household pests.', price: 95.00 },
+                { id: 'rs-9', name: 'Minor Electrical Repairs', description: 'Fixing outlets, switches, and light fixtures.', price: 85.00 },
+                { id: 'rs-11', name: 'Roof Inspection & Minor Repair', description: 'Comprehensive check for leaks, damage, and minor fixes.', price: 250.00 },
+                { id: 'rs-15', name: 'Garage Door Tune-up', description: 'Lubrication, tension check, and alignment for smooth operation.', price: 90.00 },
+                { id: 'rs-19', name: 'Home Security System Audit', description: 'Evaluation of existing security and recommendations for upgrades.', price: 110.00 },
+                { id: 'rs-20', name: 'Smart Lock Installation', description: 'Installation and setup of keyless entry systems for doors.', price: 95.00 }
+            ]
+        };
+
+        // MusiX School Lessons
+        const musiXSchoolCategories = {
+            'Keyboard Instruments': [
+                { id: 'mxl-5', name: 'Piano Lessons (Beginner)', description: 'Introduction to keys, scales, basic melodies, and sight-reading (per hour).', price: 75.00 },
+                { id: 'mxl-6', name: 'Piano Lessons (Intermediate)', description: 'Develop technique, explore various genres, and introduce classical pieces (per hour).', price: 90.00 },
+                { id: 'mxl-7', name: 'Piano Lessons (Advanced)', description: 'Master classical repertoire, jazz improvisation, and complex harmonies (per hour).', price: 110.00 },
+            ],
+            'String Instruments': [
+                { id: 'mxl-2', name: 'Guitar Lessons (Beginner)', description: 'Learn chords, strumming patterns, and basic songs (per hour).', price: 75.00 },
+                { id: 'mxl-3', name: 'Guitar Lessons (Intermediate)', description: 'Explore barre chords, advanced strumming, and fingerpicking (per hour).', price: 90.00 },
+                { id: 'mxl-4', name: 'Guitar Lessons (Advanced)', description: 'Master soloing, improvisation, and complex music theory (per hour).', price: 110.00 },
+                { id: 'mxl-12', name: 'Violin Lessons (All Levels)', description: 'Technique, bowing, vibrato, and repertoire for orchestral or solo playing (per hour).', price: 90.00 },
+                { id: 'mxl-13', name: 'Cello Lessons (All Levels)', description: 'Foundational technique, rich tone production, and ensemble playing (per hour).', price: 95.00 },
+                { id: 'mxl-19', name: 'Bass Guitar Lessons (All Levels)', description: 'Groove, rhythm, and foundational basslines for various genres (per hour).', price: 80.00 },
+                { id: 'mxl-20', name: 'Ukulele Lessons (Beginner)', description: 'Fun introduction to chords, strumming, and Hawaiian songs (per hour).', price: 65.00 },
+            ],
+            'Woodwind Instruments': [
+                { id: 'mxl-14', name: 'Flute Lessons (All Levels)', description: 'Embouchure, breath control, and orchestral excerpts (per hour).', price: 85.00 },
+                { id: 'mxl-15', name: 'Clarinet Lessons (All Levels)', description: 'Tone, articulation, and band/orchestra passages (per hour).', price: 85.00 },
+                { id: 'mxl-16', name: 'Saxophone Lessons (All Levels)', description: 'Tone, improvisation, and jazz/blues techniques (per hour).', price: 90.00 },
+            ],
+            'Brass Instruments': [
+                { id: 'mxl-17', name: 'Trumpet Lessons (All Levels)', description: 'Embouchure, breath support, and brass repertoire (per hour).', price: 85.00 },
+                { id: 'mxl-18', name: 'Trombone Lessons (All Levels)', description: 'Slide technique, tone production, and ensemble playing (per hour).', price: 85.00 },
+            ],
+            'Percussion Instruments': [
+                { id: 'mxl-8', name: 'Drum Lessons (Beginner)', description: 'Basic rhythms, stick control, and drum set posture (per hour).', price: 80.00 },
+                { id: 'mxl-9', name: 'Drum Lessons (Advanced)', description: 'Advanced techniques, polyrhythms, and genre-specific drumming (per hour).', price: 100.00 },
+            ],
+            'Vocal Studies': [
+                { id: 'mxl-10', name: 'Voice Lessons (Pop/Contemporary)', description: 'Breath support, vocal range, and song interpretation for modern genres (per hour).', price: 95.00 },
+                { id: 'mxl-11', name: 'Voice Lessons (Classical/Opera)', description: 'Classical vocal technique, breath control, and operatic repertoire (per hour).', price: 105.00 },
+            ],
+            'Theory & Production': [
+                { id: 'mxl-1', name: 'General Music Theory Class', description: 'Foundational concepts of music: scales, chords, harmony, and rhythm (per hour).', price: 60.00 },
+                { id: 'mxl-23', name: 'Music Production Basics (per hour)', description: 'Introduction to digital audio workstations (DAWs), recording, and mixing.', price: 100.00 },
+                { id: 'mxl-24', name: 'Songwriting & Composition (per hour)', description: 'Develop skills in melody, harmony, lyrics, and song structure.', price: 95.00 },
+                { id: 'mxl-25', name: 'DJing Fundamentals (per hour)', description: 'Learn beat matching, mixing techniques, and equipment setup.', price: 85.00 },
+            ],
+            'Ensemble Coaching': [
+                { id: 'mxl-21', name: 'Band Ensemble Coaching (Monthly)', description: 'Group coaching for rock, jazz, or pop bands, focus on cohesion and performance (per session).', price: 200.00 },
+                { id: 'mxl-22', name: 'Orchestra Sectional Coaching (Monthly)', description: 'Specialized coaching for strings, woodwinds, brass, or percussion sections (per session).', price: 250.00 },
+            ]
+        };
+
+        // Doctrine Bible Commentaries structured by testament and category
+        const doctrineCategories = {
+            'Old Testament': {
+                'Pentateuch': [
+                    { id: 'doc-gen', name: 'Commentary on Genesis', description: 'The book of beginnings, covering creation, the fall, the flood, and the patriarchs. Provides foundational understanding of God\'s covenant with Abraham. (KJV)', price: 65.00 }, // Very Long
+                    { id: 'doc-exo', name: 'Commentary on Exodus', description: 'Details the liberation of Israel from Egyptian bondage, the giving of the Law at Sinai, and the construction of the Tabernacle. Focuses on redemption and covenant. (KJV)', price: 65.00 }, // Very Long
+                    { id: 'doc-lev', name: 'Commentary on Leviticus', description: 'Explores the laws of holiness, sacrifices, and the priesthood. Emphasizes God\'s call for purity and atonement. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-num', name: 'Commentary on Numbers', description: 'Chronicles Israel\'s wilderness wanderings, their rebellions, and God\'s faithfulness. Highlights the journey from Sinai to the plains of Moab. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-deut', name: 'Commentary on Deuteronomy', description: 'Moses\' farewell speeches, reiterating the Law and exhorting Israel to covenant faithfulness before entering the Promised Land. (KJV)', price: 55.00 }, // Long
+                ],
+                'Historical Books (OT)': [
+                    { id: 'doc-josh', name: 'Commentary on Joshua', description: 'Narrates the conquest of Canaan under Joshua\'s leadership, the division of the land among the tribes, and Israel\'s early faithfulness. (KJV)', price: 45.00 }, // Medium
+                    { id: 'doc-jdg', name: 'Commentary on Judges', description: 'Recounts the period when Israel was ruled by judges, marked by a cycle of apostasy, oppression, and God\'s deliverance through charismatic leaders. (KJV)', price: 45.00 }, // Medium
+                    { id: 'doc-rut', name: 'Commentary on Ruth', description: 'A beautiful narrative of loyalty, love, and redemption concerning Ruth, Naomi, and Boaz, highlighting God\'s providence. (KJV)', price: 35.00 }, // Short
+                    { id: 'doc-1sam', name: 'Commentary on 1 Samuel', description: 'Covers the transition from the period of judges to the monarchy, focusing on Samuel, Saul, and the rise of David. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-2sam', name: 'Commentary on 2 Samuel', description: 'Continues the story of King David\'s reign, his triumphs, sins, and the consequences thereof. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-1kin', name: 'Commentary on 1 Kings', description: 'Begins with Solomon\'s reign, the building of the Temple, and the subsequent division of the kingdom, introducing major prophets like Elijah. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-2kin', name: 'Commentary on 2 Kings', description: 'Chronicles the reigns of the kings of Israel and Judah, leading to the fall of both kingdoms and exile. Focuses on prophetic ministries. (KJV)', price: 55.00 }, // Long
+                    { id: 'doc-1chr', name: 'Commentary on 1 Chronicles', description: 'Provides a genealogical account from Adam, focusing on the lineage of David and the Levites, emphasizing the Temple and proper worship. (KJV)', price: 45.00 }, // Medium
+                    { id: 'doc-2chr', name: 'Commentary on 2 Chronicles', description: 'Continues the history of the kings of Judah, with a strong emphasis on the Temple, worship, and the importance of obedience. (KJV)', price: 45.00 }, // Medium
+                    { id: 'doc-ezra', name: 'Commentary on Ezra', description: 'Describes the return of Jewish exiles from Babylon to Jerusalem and the rebuilding of the Temple. (KJV)', price: 35.00 }, // Short
+                    { id: 'doc-neh', name: 'Commentary on Nehemiah', description: 'Focuses on Nehemiah\'s leadership in rebuilding the walls of Jerusalem and the spiritual and social reforms that followed. (KJV)', price: 35.00 }, // Short
+                    { id: 'doc-est', name: 'Commentary on Esther', description: 'A dramatic narrative of God\'s hidden providence in protecting His people during the Persian exile through Queen Esther. (KJV)', price: 35.00 },
+                ],
+                'Poetry & Wisdom Books': [
+                    { id: 'doc-job', name: 'Commentary on Job', description: 'A profound exploration of human suffering, divine justice, and God\'s sovereignty through the trials of Job. (KJV)', price: 55.00 },
+                    { id: 'doc-psa', name: 'Commentary on Psalms', description: 'A rich collection of poetic prayers, praises, laments, and wisdom literature, reflecting the emotional and spiritual life of Israel. (KJV)', price: 65.00 },
+                    { id: 'doc-prv', name: 'Commentary on Proverbs', description: 'Contains practical wisdom and moral instruction for daily living, emphasizing righteousness, diligence, and fear of the Lord. (KJV)', price: 45.00 },
+                    { id: 'doc-ecc', name: 'Commentary on Ecclesiastes', description: 'Reflections on the meaninglessness of life "under the sun" without God, and the pursuit of wisdom and joy. (KJV)', price: 35.00 },
+                    { id: 'doc-sol', name: 'Commentary on Song of Solomon', description: 'A poetic celebration of romantic love and marriage, often interpreted allegorically as Christ\'s love for the Church. (KJV)', price: 35.00 },
+                ],
+                'Major Prophets': [
+                    { id: 'doc-isa', name: 'Commentary on Isaiah', description: 'Prophecies of judgment against Judah and surrounding nations, but also profound messages of hope, salvation, and the coming Messiah. (KJV)', price: 65.00 },
+                    { id: 'doc-jer', name: 'Commentary on Jeremiah', description: 'Prophecies during Judah\'s final decline and fall to Babylon, expressing Jeremiah\'s anguish over his people\'s disobedience. (KJV)', price: 65.00 },
+                    { id: 'doc-lam', name: 'Commentary on Lamentations', description: 'A series of poetic laments mourning the destruction of Jerusalem by the Babylonians. (KJV)', price: 35.00 },
+                    { id: 'doc-eze', name: 'Commentary on Ezekiel', description: 'Visions of God\'s glory, judgment on Israel and other nations, and prophecies of future restoration and the new Temple. (KJV)', price: 65.00 },
+                    { id: 'doc-dan', name: 'Commentary on Daniel', description: 'Narrates Daniel\'s experiences in Babylonian exile and his apocalyptic visions concerning future empires and the ultimate triumph of God\'s kingdom. (KJV)', price: 45.00 },
+                ],
+                'Minor Prophets': [
+                    { id: 'doc-hos', name: 'Commentary on Hosea', description: 'Uses Hosea\'s marriage to an unfaithful wife as an allegory for God\'s persistent love for unfaithful Israel. (KJV)', price: 35.00 },
+                    { id: 'doc-joe', name: 'Commentary on Joel', description: 'Prophecies of a devastating locust plague and the "Day of the Lord," culminating in a promise of restoration and the outpouring of the Spirit. (KJV)', price: 35.00 },
+                    { id: 'doc-amo', name: 'Commentary on Amos', description: 'A prophet from Judah denounces social injustice and moral decay in Israel and surrounding nations, proclaiming God\'s judgment and a future restoration. (KJV)', price: 35.00 },
+                    { id: 'doc-oba', name: 'Commentary on Obadiah', description: 'The shortest book in the Old Testament, delivering a prophecy of judgment against Edom for their pride and mistreatment of Israel. (KJV)', price: 25.00 },
+                    { id: 'doc-jon', name: 'Commentary on Jonah', description: 'A unique narrative illustrating God\'s compassion and mission to all people, even the Ninevites, despite Jonah\'s reluctance. (KJV)', price: 35.00 },
+                    { id: 'doc-mic', name: 'Commentary on Micah', description: 'Combines prophecies of judgment against Judah and Israel with messages of hope, justice, and the promise of a ruler from Bethlehem. (KJV)', price: 35.00 },
+                    { id: 'doc-nah', name: 'Commentary on Nahum', description: 'A prophetic oracle predicting the complete destruction of the Assyrian city of Nineveh, a source of terror and oppression. (KJV)', price: 35.00 },
+                    { id: 'doc-hab', name: 'Commentary on Habakkuk', description: 'A dialogue between the prophet and God concerning divine justice and the use of Babylon to punish Judah, concluding with a declaration of faith. (KJV)', price: 35.00 },
+                    { id: 'doc-zep', name: 'Commentary on Zephaniah', description: 'Focuses on the "Day of the Lord" as a day of judgment and purification for Judah and other nations, followed by a promise of restoration for a remnant. (KJV)', price: 35.00 },
+                    { id: 'doc-hag', name: 'Commentary on Haggai', description: 'A post-exilic prophet who exhorted the returned exiles to prioritize rebuilding the Temple in Jerusalem. (KJV)', price: 35.00 },
+                    { id: 'doc-zec', name: 'Commentary on Zechariah', description: 'Features visionary messages and prophecies concerning the rebuilding of Jerusalem, the coming Messiah, and the end times. (KJV)', price: 45.00 },
+                    { id: 'doc-mal', name: 'Commentary on Malachi', description: 'The final book of the Old Testament, addressing lukewarm worship, social injustice, and promising the coming of Elijah before the great Day of the Lord. (KJV)', price: 35.00 },
+                ]
+            },
+            'New Testament': {
+                'Gospels': [
+                    { id: 'doc-mat', name: 'Commentary on Matthew', description: 'Presents Jesus as the promised Messiah and King of Israel, emphasizing His teachings and fulfillment of Old Testament prophecy. (KJV)', price: 55.00 },
+                    { id: 'doc-mar', name: 'Commentary on Mark', description: 'A fast-paced narrative portraying Jesus as the Son of God and Servant, emphasizing His actions and authority. (KJV)', price: 45.00 },
+                    { id: 'doc-luk', name: 'Commentary on Luke', description: 'Highlights Jesus\' humanity, compassion, and universal message of salvation, emphasizing His ministry to the marginalized. (KJV)', price: 55.00 },
+                    { id: 'doc-john', name: 'Commentary on John', description: 'Emphasizes Jesus\' divine nature as the Son of God through His "I Am" statements and miraculous signs, revealing His identity and purpose. (KJV)', price: 55.00 },
+                ],
+                'History (NT)': [
+                    { id: 'doc-acts', name: 'Commentary on Acts', description: 'Chronicles the birth and expansion of the early Christian church from Jerusalem to Rome, detailing the work of the Holy Spirit through the apostles. (KJV)', price: 55.00 },
+                ],
+                'Pauline Epistles': [
+                    { id: 'doc-rom', name: 'Commentary on Romans', description: 'Paul\'s most comprehensive theological treatise, explaining salvation by grace through faith, God\'s righteousness, and practical Christian living. (KJV)', price: 55.00 },
+                    { id: 'doc-1cor', name: 'Commentary on 1 Corinthians', description: 'Addresses various issues within the Corinthian church, including divisions, immorality, spiritual gifts, and resurrection. (KJV)', price: 45.00 },
+                    { id: 'doc-2cor', name: 'Commentary on 2 Corinthians', description: 'Paul\'s defense of his apostolic ministry, emphasizing suffering, reconciliation, and sacrificial giving. (KJV)', price: 35.00 },
+                    { id: 'doc-gal', name: 'Commentary on Galatians', description: 'A strong defense of justification by faith alone, warning against legalism and emphasizing freedom in Christ. (KJV)', price: 35.00 },
+                    { id: 'doc-eph', name: 'Commentary on Ephesians', description: 'Explores the spiritual blessings of believers in Christ, the unity of the church, and practical exhortations for holy living. (KJV)', price: 35.00 },
+                    { id: 'doc-php', name: 'Commentary on Philippians', description: 'A letter of joy and encouragement from Paul, emphasizing humility, unity, and finding contentment in Christ. (KJV)', price: 35.00 },
+                    { id: 'doc-col', name: 'Commentary on Colossians', description: 'Highlights the supremacy and sufficiency of Christ, warning against false philosophies and legalistic practices. (KJV)', price: 35.00 },
+                    { id: 'doc-1the', name: 'Commentary on 1 Thessalonians', description: 'Encourages new believers in their faith, addresses practical Christian living, and provides teaching on the return of Christ. (KJV)', price: 35.00 },
+                    { id: 'doc-2the', name: 'Commentary on 2 Thessalonians', description: 'Clarifies teaching on the Day of the Lord and exhorts believers to steadfastness and diligent work. (KJV)', price: 35.00 },
+                    { id: 'doc-1tim', name: 'Commentary on 1 Timothy', description: 'Instructions from Paul to Timothy concerning church leadership, sound doctrine, and orderly worship. (KJV)', price: 35.00 },
+                    { id: 'doc-2tim', name: 'Commentary on 2 Timothy', description: 'Paul\'s final letter, urging Timothy to remain faithful to the Gospel and to endure hardship in ministry. (KJV)', price: 35.00 },
+                    { id: 'doc-tit', name: 'Commentary on Titus', description: 'Guidelines for leadership and healthy churches on Crete. (KJV)', price: 35.00 },
+                    { id: 'doc-phl', name: 'Commentary on Philemon', description: 'A personal letter from Paul appealing to Philemon to receive his runaway slave Onesimus as a brother in Christ. (KJV)', price: 25.00 },
+                ],
+                'General Epistles': [
+                    { id: 'doc-heb', name: 'Commentary on Hebrews', description: 'Argues for the superiority of Christ and the New Covenant over the Old Testament sacrificial system, exhorting believers to persevere. (KJV)', price: 45.00 },
+                    { id: 'doc-jam', name: 'Commentary on James', description: 'Practical wisdom literature emphasizing faith demonstrated through good works, perseverance, and control of the tongue. (KJV)', price: 35.00 },
+                    { id: 'doc-1pet', name: 'Commentary on 1 Peter', description: 'Offers hope and encouragement to suffering believers, calling them to holy living and submission to authority. (KJV)', price: 35.00 },
+                    { id: 'doc-2pet', name: 'Commentary on 2 Peter', description: 'Warns against false teachers, encourages spiritual growth, and affirms the certainty of Christ\'s second coming. (KJV)', price: 35.00 },
+                    { id: 'doc-1john', name: 'Commentary on 1 John', description: 'Emphasizes fellowship with God, assurance of salvation, and the marks of true Christian faith: righteousness, love, and belief in Christ. (KJV)', price: 35.00 },
+                    { id: 'doc-2john', name: 'Commentary on 2 John', description: 'A brief letter warning against false teachers and emphasizing the importance of walking in truth and love. (KJV)', price: 25.00 },
+                    { id: 'doc-3john', name: 'Commentary on 3 John', description: 'Commends Gaius for his hospitality and faithfulness, while rebuking Diotrephes for his uncooperative spirit. (KJV)', price: 25.00 },
+                    { id: 'doc-jud', name: 'Commentary on Jude', description: 'A short but intense letter exhorting believers to contend earnestly for the faith against apostasy and false teachers. (KJV)', price: 25.00 },
+                ],
+                'Prophecy (NT)': [
+                    { id: 'doc-rev', name: 'Commentary on Revelation', description: 'An apocalyptic vision revealing Christ\'s ultimate victory, the judgment of evil, and the establishment of God\'s eternal kingdom and new creation. (KJV)', price: 55.00 },
+                ]
+            }
+        };
+
+        // Flatten all doctrine commentaries into a single array for easier global access
+        const doctrineBibleCommentaries = [];
+        for (const testamentKey in doctrineCategories) {
+            for (const categoryKey in doctrineCategories[testamentKey]) {
+                doctrineCategories[testamentKey][categoryKey].forEach(item => {
+                    doctrineBibleCommentaries.push(item);
+                });
+            }
+        }
+
+
+        // All individual business plan arrays (must be defined before businessPlanCategories)
+        const generalBusinessPlans = [
+            { id: 'gbp-1', name: 'Startup Essentials Package', description: 'Basic legal setup, branding kit, and digital presence starter.', price: 1500.00 },
+            { id: 'gbp-2', name: 'Growth Accelerator Program', description: 'Advanced marketing strategy, sales training, and performance analytics.', price: 4500.00 },
+            { id: 'gbp-3', name: 'Enterprise IT Solutions', description: 'Comprehensive IT infrastructure, cybersecurity, and cloud migration.', price: 9800.00 },
+            { id: 'gbp-4', name: 'Brand & Market Dominance', description: 'In-depth market research, aggressive branding, and large-scale advertising.', price: 7200.00 },
+            { id: 'gbp-5', name: 'Financial Planning & Audit', description: 'Strategic financial planning, tax optimization, and annual auditing.', price: 2500.00 },
+        ];
+        const plumberBusinessPlans = [
+            { id: 'pb-1', name: 'Plumber Digital Presence Bundle', description: 'Website, local SEO, and social media setup for plumbers.', price: 1200.00 },
+            { id: 'pb-2', name: 'Emergency Service Optimization', description: 'Strategies for rapid response and 24/7 service marketing.', price: 800.00 },
+            { id: 'pb-3', name: 'Pipe & Drain Tech Training', description: 'Advanced training modules for new plumbing technologies and tools.', price: 1500.00 },
+            { id: 'pb-4', name: 'Customer Loyalty Program Setup', description: 'System to manage recurring clients and service agreements.', price: 700.00 },
+        ];
+        const rooferBusinessPlans = [
+            { id: 'rb-1', name: 'Roofer Lead Generation System', description: 'Targeted advertising campaigns for roofing leads.', price: 1400.00 },
+            { id: 'rb-2', name: 'Safety & Compliance Workshop', description: 'Training and consultation for roofing safety standards.', price: 950.00 },
+            { id: 'rb-3', name: 'Material Procurement & Supply Chain', description: 'Optimization of roofing material sourcing and inventory.', price: 1100.00 },
+            { id: 'rb-4', name: 'Storm Damage Response Kit', description: 'Guidance and tools for rapid deployment after storm events.', price: 600.00 },
+        ];
+        const carpenterBusinessPlans = [
+            { id: 'cb-1', name: 'Custom Woodwork Marketing', description: 'Showcasing craftsmanship through visual portfolios and online ads.', price: 1100.00 },
+            { id: 'cb-2', name: 'Project Management Software Integration', description: 'Setup for efficient tracking of carpentry projects and client communication.', price: 900.00 },
+            { id: 'cb-3', name: 'Specialty Tools & Training', description: 'Access to workshops on advanced carpentry techniques and equipment.', price: 1300.00 },
+            { id: 'cb-4', name: 'Workshop Safety & Ergonomics', description: 'Consulting on optimizing workshop layout and safety protocols.', price: 750.00 },
+        ];
+        const lawnSpecialistBusinessPlans = [
+            { id: 'lsb-1', name: 'Lawn Care Route Optimization', description: 'Software and strategies for efficient scheduling and travel.', price: 850.00 },
+            { id: 'lsb-2', name: 'Seasonal Marketing Campaigns', description: 'Tailored promotions for spring clean-up, summer care, and fall leaf removal.', price: 700.00 },
+            { id: 'lsb-3', name: 'Equipment Maintenance & Fleet Management', description: 'Advisory on maintaining and tracking lawn care machinery.', price: 1000.00 },
+            { id: 'lsb-4', name: 'Organic Lawn Treatment Certification', description: 'Training and guidance for offering eco-friendly lawn services.', price: 1200.00 },
+        ];
+        const elevatorMechanicBusinessPlans = [
+            { id: 'embp-1', name: 'Elevator Maintenance & Service Plan', description: 'Routine maintenance contracts and emergency call systems.', price: 2500.00 },
+            { id: 'embp-2', name: 'Code Compliance & Safety Audit', description: 'Ensuring adherence to state and national elevator safety codes.', price: 1800.00 },
+            { id: 'embp-3', name: 'Modernization & Upgrade Consulting', description: 'Guidance on upgrading old elevator systems for efficiency and safety.', price: 3000.00 },
+        ];
+        const zookeeperBusinessPlans = [
+            { id: 'zbp-1', name: 'Animal Enrichment Program Development', description: 'Designing behavioral enrichment for various species.', price: 900.00 },
+            { id: 'zbp-2', name: 'Habitat Design & Maintenance Consulting', description: 'Expert advice on creating species-appropriate and safe enclosures.', price: 1600.00 },
+            { id: 'zbp-3', name: 'Public Education & Engagement Strategy', description: 'Developing programs to educate visitors and engage the community.', price: 1100.00 },
+        ];
+        const veterinarianBusinessPlans = [
+            { id: 'vbp-1', name: 'Veterinary Practice Management Suite', description: 'Software integration for patient records, scheduling, and billing.', price: 2800.00 },
+            { id: 'vbp-2', name: 'Specialty Clinic Marketing', description: 'Targeted marketing for niche veterinary services (e.g., equine, exotic pets).', price: 1500.00 },
+            { id: 'vbp-3', name: 'Telemedicine Integration & Training', description: 'Setting up virtual consultation services for pet owners.', price: 1200.00 },
+            { id: 'vbp-4', name: 'Pet Wellness Plan Implementation', description: 'Framework for subscription-based wellness programs for pets.', price: 900.00 },
+        ];
+        const farmKeeperBusinessPlans = [
+            { id: 'fkbp-1', name: 'Sustainable Farming Certification Support', description: 'Assistance with organic and sustainable agriculture certifications.', price: 1700.00 },
+            { id: 'fkbp-2', name: 'Crop Rotation & Soil Health Optimization', description: 'Consulting on maximizing yield and soil fertility naturally.', price: 1400.00 },
+            { id: 'fkbp-3', name: 'Farm-to-Market Distribution Strategy', description: 'Guidance on connecting produce directly to consumers or local markets.', price: 1300.00 },
+            { id: 'fkbp-4', name: 'Livestock Health & Management Protocol', description: 'Best practices for animal welfare and disease prevention.', price: 1000.00 },
+        ];
+        const bakerConfectionerBusinessPlans = [
+            { id: 'bccp-1', name: 'Artisan Baking Workshop & Recipe Development', description: 'Hands-on training and unique recipe creation.', price: 950.00 },
+            { id: 'bccp-2', name: 'Online Store & Delivery Setup', description: 'E-commerce integration and logistics for baked goods.', price: 1200.00 },
+            { id: 'bccp-3', name: 'Food Safety & Hygiene Compliance', description: 'Ensuring adherence to health and safety regulations for bakeries.', price: 800.00 },
+        ];
+        const eventPlannerBusinessPlans = [
+            { id: 'epp-1', name: 'Vendor Network & Partnership Building', description: 'Strategies for establishing strong relationships with event suppliers.', price: 1600.00 },
+            { id: 'epp-2', name: 'Client Relationship Management System', description: 'Software setup for managing client interactions and event details.', price: 1100.00 },
+            { id: 'epp-3', name: 'Event Marketing & Promotion Toolkit', description: 'Tools and strategies for attracting clients and promoting events.', price: 1300.00 },
+        ];
+        const webDeveloperBusinessPlans = [
+            { id: 'wdbp-1', name: 'Client Project Management Workflow', description: 'Streamlining project intake, development, and delivery processes.', price: 1500.00 },
+            { id: 'wdbp-2', name: 'Advanced Frontend Framework Training', description: 'Workshops on React, Vue, or Angular best practices.', price: 1800.00 },
+            { id: 'wdbp-3', name: 'Cybersecurity Best Practices for Web Apps', description: 'Consulting on securing web applications and client data.', price: 1400.00 },
+        ];
+        const graphicDesignerBusinessPlans = [
+            { id: 'gdbp-1', name: 'Portfolio & Brand Identity Development', description: 'Crafting a compelling online presence and personal brand.', price: 1000.00 },
+            { id: 'gdbp-2', name: 'Advanced Software & Technique Masterclass', description: 'Training in Adobe Creative Suite, Figma, or other design tools.', price: 1200.00 },
+            { id: 'gdbp-3', name: 'Client Acquisition & Pricing Strategy', description: 'Guidance on finding clients and setting competitive rates.', price: 900.00 },
+        ];
+        const personalTrainerBusinessPlans = [
+            { id: 'ptbp-1', name: 'Client Onboarding & Progress Tracking System', description: 'Digital tools for managing client profiles and workout progress.', price: 850.00 },
+            { id: 'ptbp-2', name: 'Online Coaching Platform Integration', description: 'Setup for delivering virtual training sessions and programs.', price: 1100.00 },
+            { id: 'ptbp-3', name: 'Nutrition Fundamentals for Trainers', description: 'Certification course on basic nutritional guidance for clients.', price: 700.00 },
+        ];
+        const restaurantOwnerBusinessPlans = [
+            { id: 'robp-1', name: 'Menu Engineering & Cost Optimization', description: 'Analyzing menu profitability and reducing food waste.', price: 1900.00 },
+            { id: 'robp-2', name: 'Online Ordering & Delivery Integration', description: 'Setup for third-party delivery services and in-house ordering systems.', price: 1700.00 },
+            { id: 'robp-3', name: 'Staff Training & Customer Service Excellence', description: 'Workshops on hospitality, efficiency, and guest satisfaction.', price: 1500.00 },
+        ];
+        const hairStylistSalonOwnerBusinessPlans = [
+            { id: 'hssop-1', name: 'Client Booking & CRM System', description: 'Implementing salon management software for appointments and client history.', price: 950.00 },
+            { id: 'hssop-2', name: 'Social Media & Influencer Marketing', description: 'Strategies for building online presence and attracting new clients.', price: 800.00 },
+            { id: 'hssop-3', name: 'Advanced Color & Cutting Techniques Workshop', description: 'Training on the latest trends and specialized services.', price: 1200.00 },
+        ];
+        const photographerBusinessPlans = [
+            { id: 'php-1', name: 'Professional Portfolio Website Development', description: 'Creating a stunning online showcase for photography work.', price: 1300.00 },
+            { id: 'php-2', name: 'Advanced Photo Editing & Retouching Course', description: 'Mastering software like Photoshop and Lightroom for professional results.', price: 1100.00 },
+            { id: 'php-3', name: 'Client Contracts & Licensing Best Practices', description: 'Legal guidance on protecting your work and managing client agreements.', price: 750.00 },
+        ];
+        const electricianBusinessPlans = [
+            { id: 'elp-1', name: 'Electrical Safety & Compliance Training', description: 'Ensuring adherence to national and local electrical codes.', price: 1400.00 },
+            { id: 'elp-2', name: 'Service Call Efficiency Optimization', description: 'Strategies for rapid response and efficient job completion.', price: 900.00 },
+            { id: 'elp-3', name: 'Commercial & Industrial Electrical Project Management', description: 'Guidance on handling large-scale electrical installations.', price: 1800.00 },
+        ];
+        const landscaperBusinessPlans = [
+            { id: 'ldp-1', name: 'Landscape Design Software Training', description: 'Learning tools for creating professional landscape blueprints.', price: 1000.00 },
+            { id: 'ldp-2', name: 'Seasonal Plant & Garden Care Programs', description: 'Developing recurring service packages for plant health and garden maintenance.', price: 800.00 },
+            { id: 'ldp-3', name: 'Water Management & Irrigation Systems', description: 'Consulting on efficient watering solutions and smart irrigation.', price: 1500.00 },
+        ];
+        const childcareProviderBusinessPlans = [
+            { id: 'ccp-1', name: 'Early Childhood Education Curriculum Development', description: 'Creating engaging and educational programs for children.', price: 950.00 },
+            { id: 'ccp-2', name: 'Licensing & Regulatory Compliance Support', description: 'Assistance with obtaining and maintaining necessary childcare licenses.', price: 1200.00 },
+            { id: 'ccp-3', name: 'Parent Communication & Enrollment System', description: 'Implementing tools for parent updates and new client intake.', price: 800.00 },
+        ];
+        const musiXSchoolBusinessPlans = [
+            { id: 'mxsbp-1', name: 'MusiX School Marketing Package', description: 'Lead generation and branding for music schools.', price: 1500.00 },
+            { id: 'mxsbp-2', name: 'Online Learning Platform Integration', description: 'Setup and training for virtual music education.', price: 2000.00 },
+        ];
+        const doctrineBusinessPlans = [
+            { id: 'docbp-1', name: 'Theological Research & Publishing Support', description: 'Assistance with scholarly articles and book publication.', price: 3000.00 },
+            { id: 'docbp-2', name: 'Seminary Program Development', description: 'Consulting for creating or enhancing theological education curricula.', price: 4500.00 },
+        ];
+
+
+        // Mapping of trade names to their respective business plan arrays (ONLY business plans go here)
+        const businessPlanCategories = {
+            'General': generalBusinessPlans,
+            'Plumber': plumberBusinessPlans,
+            'Roofer': rooferBusinessPlans,
+            'Carpenter': carpenterBusinessPlans,
+            'Lawn Specialist': lawnSpecialistBusinessPlans,
+            'Elevator Mechanic': elevatorMechanicBusinessPlans,
+            'Zookeeper/Animal Care': zookeeperBusinessPlans,
+            'Veterinarian': veterinarianBusinessPlans,
+            'Farm Keeper': farmKeeperBusinessPlans,
+            'Baker/Confectioner': bakerConfectionerBusinessPlans,
+            'Event Planner': eventPlannerBusinessPlans,
+            'Web Developer': webDeveloperBusinessPlans,
+            'Graphic Designer': graphicDesignerBusinessPlans,
+            'Personal Trainer': personalTrainerBusinessPlans,
+            'Restaurant Owner': restaurantOwnerBusinessPlans,
+            'Hair Stylist/Salon Owner': hairStylistSalonOwnerBusinessPlans,
+            'Photographer': photographerBusinessPlans,
+            'Electrician': electricianBusinessPlans,
+            'Landscaper': landscaperBusinessPlans,
+            'Childcare Provider': childcareProviderBusinessPlans,
+            'MusiX School': musiXSchoolBusinessPlans, // MusiX School *Business Plans* category
+            'Doctrine': doctrineBusinessPlans, // Doctrine *Business Plans* category
+        };
+
+        // Global states for current view and category within each section
+        let residentialCurrentView = 'category'; // 'category' or 'list'
+        let residentialCurrentCategory = ''; // e.g., 'Home Care & Maintenance'
+
+        let musiXCurrentView = 'category'; // 'category' or 'list'
+        let musiXCurrentCategory = ''; // e.g., 'Strings'
+
+        let doctrineCurrentView = 'category'; // 'category' or 'list'
+        let doctrineCurrentBookTestament = ''; // e.g., 'Old Testament', 'New Testament'
+        let doctrineCurrentBookCategory = ''; // e.g., 'Pentateuch', 'Gospels'
+
+
+        // Helper function to get all purchasable items for the grant application and consultation
+        function getAllPurchasableItems() {
+            let allItems = [];
+
+            // Residential Services
+            for (const catKey in residentialServiceCategories) {
+                residentialServiceCategories[catKey].forEach(item => allItems.push({ ...item, type: 'Residential Service - ' + catKey }));
+            }
+
+            // MusiX School Lessons
+            for (const catKey in musiXSchoolCategories) {
+                musiXSchoolCategories[catKey].forEach(item => allItems.push({ ...item, type: 'MusiX Lesson - ' + catKey }));
+            }
+
+            // Doctrine Commentaries (using the newly created flat array)
+            doctrineBibleCommentaries.forEach(item => allItems.push({ ...item, type: 'Doctrine Commentary (Hard Copy)' }));
+
+            // Add all Business Plans from various categories
+            for (const categoryKey in businessPlanCategories) {
+                const categoryArray = businessPlanCategories[categoryKey];
+                allItems = allItems.concat(categoryArray.map(item => ({ ...item, type: `Business Plan (${categoryKey})` })));
+            }
+
+            return allItems;
+        }
+
+
+        // Helper function to check if an item should only be added once (business plan or Doctrine commentary)
+        function isSingleQuantityItem(itemId) {
+            // Check if it's a Doctrine commentary
+            if (doctrineBibleCommentaries.some(commentary => commentary.id === itemId)) {
+                return true;
+            }
+            // Check if it's any other business plan
+            for (const key in businessPlanCategories) {
+                if (businessPlanCategories[key].some(plan => plan.id === itemId)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // --- Cart Functions ---
+
+        /**
+         * Adds an item to the shopping cart or handles quantity increment based on item type.
+         * @param {string} itemId - The ID of the item to add.
+         * @param {Array} sourceArray - The array (e.g., residentialServices, musiXSchoolLessons, etc.) where the item originated.
+         */
+        function addToCart(itemId, sourceArray) {
+            const item = sourceArray.find(service => service.id === itemId);
+            if (!item) {
+                console.error('Item not found in source array:', itemId, sourceArray);
+                alertMessage('Error: Item not found. Please try again.');
+                return;
+            }
+
+            const existingCartItem = shoppingCart.find(cartItem => cartItem.id === itemId);
+
+            if (isSingleQuantityItem(itemId)) { // Uses the new, more accurate single-quantity check
+                if (existingCartItem) {
+                    alertMessage(`"${item.name}" can only be added once to the cart.`);
+                } else {
+                    shoppingCart.push({ ...item, quantity: 1 });
+                    alertMessage(`Added "${item.name}" to cart.`);
+                }
+            } else { // It's a residential service OR MusiX lesson (multi-quantity)
+                if (existingCartItem) {
+                    existingCartItem.quantity++;
+                } else {
+                    shoppingCart.push({ ...item, quantity: 1 });
+                }
+                alertMessage(`Added "${item.name}" to cart.`);
+            }
+            updateCartSummary(); // Always refresh the cart summary
+        }
+
+        /**
+         * Calculates the base total cost of items in the shopping cart (before discount).
+         * @returns {number} The base total cost.
+         */
+        function calculateBaseCartTotal() {
+            return shoppingCart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        /**
+         * Calculates the final total cost including any applied discount.
+         * @returns {number} The final total cost.
+         */
+        function calculateFinalCartTotal() {
+            const baseTotal = calculateBaseCartTotal();
+            return baseTotal * (1 - appliedDiscount);
+        }
+
+        /**
+         * Updates a small cart summary often displayed on the home page or header.
+         */
+        function updateCartSummary() {
+            const cartSummaryElement = document.getElementById('cart-summary');
+            if (cartSummaryElement) {
+                const totalItems = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
+                const totalCost = calculateFinalCartTotal().toFixed(2);
+                cartSummaryElement.innerHTML = `🛒 ${totalItems} items ($${totalCost})`;
+            }
+        }
+
+        /**
+         * Applies a discount code to the cart.
+         */
+        function applyDiscountCode() {
+            const codeInput = document.getElementById('discount-code-input');
+            const code = codeInput.value.toUpperCase().trim();
+            const discountMessageElement = document.getElementById('discount-message');
+
+            if (code === currentDiscountCode && appliedDiscount > 0) {
+                alertMessage(`Discount code "${code}" is already applied.`);
+                return;
+            }
+
+            if (discountCodes[code]) {
+                appliedDiscount = discountCodes[code];
+                currentDiscountCode = code;
+                alertMessage(`Discount code "${code}" applied! You save ${Math.round(appliedDiscount * 100)}%.`);
+                renderCartPage(); // Re-render cart to show new total
+            } else {
+                appliedDiscount = 0; // Reset discount if code is invalid
+                currentDiscountCode = '';
+                alertMessage(`Invalid discount code: "${code}".`);
+                renderCartPage(); // Re-render cart to show no discount applied
+            }
+        }
+
+        /**
+         * Renders the main shopping cart page.
+         */
+        function renderCartPage() {
+            const appContainer = document.getElementById('app-container');
+            const baseTotal = calculateBaseCartTotal();
+            const finalTotal = calculateFinalCartTotal();
+            const discountAmount = baseTotal * appliedDiscount;
+
+            let cartContent = '';
+            if (shoppingCart.length === 0) {
+                cartContent = `<p class="text-lg text-gray-600">Your cart is empty. Start adding some services or plans!</p>`;
+            } else {
+                cartContent = `
+                    <div class="scrollable-content">
+                        <ul class="divide-y divide-gray-200">
+                            ${shoppingCart.map(item => `
+                                <li class="py-4 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-lg font-semibold text-gray-800">${item.name}</p>
+                                        <p class="text-sm text-gray-500">Quantity: ${item.quantity} x $${item.price.toFixed(2)}</p>
+                                    </div>
+                                    <p class="text-lg font-bold text-gray-900">$${(item.price * item.quantity).toFixed(2)}</p>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-md font-semibold text-gray-700">Subtotal:</span>
+                            <span class="text-md font-semibold text-gray-700">$${baseTotal.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-md font-semibold text-red-600">Discount ${appliedDiscount > 0 ? `(${Math.round(appliedDiscount * 100)}% off)` : ''}:</span>
+                            <span class="text-md font-semibold text-red-600">-$${discountAmount.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-gray-900">Total:</span>
+                            <span class="text-xl font-bold text-blue-700">$${finalTotal.toFixed(2)}</span>
+                        </div>
+                    </div>
+
+                    <!-- Discount Code Application Section -->
+                    <div class="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">Apply Discount Code</h3>
+                        <div id="discount-message" class="mb-2 text-sm">
+                            ${appliedDiscount > 0 ? `<span class="text-green-600">Discount code "${currentDiscountCode}" applied! You save ${Math.round(appliedDiscount * 100)}%.</span>` : ''}
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="discount-code-input" placeholder="Enter code"
+                                class="flex-grow px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base"
+                                value="${currentDiscountCode}">
+                            <button id="apply-discount-btn"
+                                class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                Apply Discount
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Password Protected Discount Code List Section -->
+                    <div class="mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">View Discount Code Options (Password Protected)</h3>
+                        ${isDiscountCodesUnlocked ? `
+                            <p class="text-gray-700 mb-2">Here are the available discount codes:</p>
+                            <ul class="list-disc list-inside text-left text-gray-700 space-y-1">
+                                ${Object.entries(discountCodes).map(([code, percentage]) => `
+                                    <li><span class="font-bold text-yellow-800">${code}</span>: ${Math.round(percentage * 100)}% off</li>
+                                `).join('')}
+                            </ul>
+                        ` : `
+                            <form id="discount-unlock-form" class="flex flex-col sm:flex-row gap-3">
+                                <input type="password" id="discount-password-input" placeholder="Enter password"
+                                    class="flex-grow px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 text-base">
+                                <button type="submit" id="unlock-discount-btn"
+                                    class="px-6 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md shadow transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-300">
+                                    Unlock Codes
+                                </button>
+                            </form>
+                            <div id="unlock-message" class="mt-2 text-sm text-red-600"></div>
+                        `}
+                    </div>
+
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                        <button id="btnClearCart"
+                            class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-300">
+                            Clear Cart
+                        </button>
+                        <button id="btnProceedToCheckout"
+                            class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-green-300">
+                            Proceed to Checkout (Placeholder)
+                        </button>
+                    </div>
+                `;
+            }
+
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">Your Shopping Cart</h2>
+                    ${cartContent}
+                    <button id="btnBackToHomeFromCart"
+                        class="mt-8 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+
+            // Attach event listeners after content is rendered
+            if (shoppingCart.length > 0) {
+                document.getElementById('btnClearCart').addEventListener('click', () => alertMessage("Are you sure you want to clear your cart?", true, clearCart));
+                document.getElementById('btnProceedToCheckout').addEventListener('click', () => alertMessage("Checkout functionality coming soon!"));
+            }
+            // Always attach these as they are part of the cart page layout
+            document.getElementById('apply-discount-btn').addEventListener('click', applyDiscountCode);
+
+            if (!isDiscountCodesUnlocked) {
+                const unlockForm = document.getElementById('discount-unlock-form');
+                if (unlockForm) { // Ensure the form exists before attaching listener
+                    unlockForm.addEventListener('submit', handleUnlockDiscountCodes);
+                }
+            }
+
+            document.getElementById('btnBackToHomeFromCart').addEventListener('click', renderHomePage);
+        }
+
+        /**
+         * Handles the conceptual unlock of discount codes.
+         * @param {Event} event - The form submission event.
+         */
+        function handleUnlockDiscountCodes(event) {
+            event.preventDefault(); // Prevent default form submission
+            const passwordInput = document.getElementById('discount-password-input');
+            const unlockMessageElement = document.getElementById('unlock-message'); // This might be dynamically removed, so check
+            const password = passwordInput.value;
+
+            if (password === 'admin') { // Hardcoded password for demo
+                isDiscountCodesUnlocked = true;
+                if (unlockMessageElement) unlockMessageElement.textContent = ''; // Clear any previous error message
+                alertMessage("Discount codes unlocked!");
+                renderCartPage(); // Re-render cart to show the codes
+            } else {
+                if (unlockMessageElement) {
+                    unlockMessageElement.textContent = "Incorrect password. Please try again.";
+                } else {
+                     alertMessage("Incorrect password. Please try again."); // Fallback if element not found
+                }
+                passwordInput.value = ''; // Clear the input field
+            }
+        }
+
+        /**
+         * Clears all items from the shopping cart and resets discount.
+         */
+        function clearCart() {
+            shoppingCart = [];
+            appliedDiscount = 0; // Reset discount when cart is cleared
+            currentDiscountCode = '';
+            alertMessage("Cart cleared.");
+            updateCartSummary();
+            renderCartPage(); // Re-render cart page as empty
+        }
+
+        /**
+         * Displays a simple alert message using a custom modal.
+         * @param {string} message - The message to display.
+         * @param {boolean} [showConfirmButton=false] - Whether to show a confirm button.
+         * @param {function} [onConfirmAction=null] - Callback function for confirm button.
+         */
+        function alertMessage(message, showConfirmButton = false, onConfirmAction = null) {
+            const existingModal = document.getElementById('custom-alert-modal');
+            if (existingModal) existingModal.remove();
+
+            const modalHtml = `
+                <div id="custom-alert-modal" class="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full text-center">
+                        <p class="text-lg font-semibold text-gray-800 mb-4">${message}</p>
+                        <div class="flex justify-center gap-4">
+                            ${showConfirmButton ? `
+                                <button id="alert-confirm-btn" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-300">
+                                    Confirm
+                                </button>
+                            ` : ''}
+                            <button id="alert-close-btn" class="px-5 py-2 ${showConfirmButton ? 'bg-gray-400 hover:bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                ${showConfirmButton ? 'Cancel' : 'OK'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+            document.getElementById('alert-close-btn').addEventListener('click', () => {
+                document.getElementById('custom-alert-modal').remove();
+            });
+
+            if (showConfirmButton) {
+                document.getElementById('alert-confirm-btn').addEventListener('click', () => {
+                    if (onConfirmAction) {
+                        onConfirmAction();
+                    }
+                    document.getElementById('custom-alert-modal').remove();
+                });
+            }
+        }
+
+        /**
+         * Displays a specific modal for viewing commentary content.
+         * @param {string} title - The title of the commentary (e.g., "Commentary on Genesis").
+         * @param {string} description - The description/summary of the commentary.
+         */
+        function renderCommentaryViewerModal(title, description) {
+            const existingModal = document.getElementById('commentary-viewer-modal');
+            if (existingModal) existingModal.remove();
+
+            const modalHtml = `
+                <div id="commentary-viewer-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white rounded-lg shadow-xl p-6 max-w-md w-full text-left relative overflow-hidden">
+                        <button id="commentary-close-btn" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded-full p-1" aria-label="Close commentary viewer">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">${title}</h3>
+                        <p class="text-gray-700 mb-4">${description}</p>
+                        <div class="bg-blue-50 p-4 rounded-md text-blue-800 italic border border-blue-200">
+                            <p class="font-semibold mb-2">This is an Electronic/Online Copy.</p>
+                            <p>Full commentary content would appear here. This digital version is available for affiliates and customers who have purchased this commentary.</p>
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button id="commentary-modal-ok-btn" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+            document.getElementById('commentary-close-btn').addEventListener('click', () => {
+                document.getElementById('commentary-viewer-modal').remove();
+            });
+            document.getElementById('commentary-modal-ok-btn').addEventListener('click', () => {
+                document.getElementById('commentary-viewer-modal').remove();
+            });
+        }
+
+
+        // --- Page Rendering Functions ---
+
+        // Function to render the Home Page
+        function renderHomePage() {
+            const appContainer = document.getElementById('app-container');
+            appContainer.innerHTML = `
+                <div class="text-center p-4 sm:p-8">
+                    <div class="relative overflow-hidden rounded-3xl shadow-2xl mb-12 bg-indigo-700 hero-pattern" style="min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                        <div class="hero-gradient-overlay absolute inset-0 z-10 flex flex-col items-center justify-center py-20 px-4 text-white">
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight animate-fadeInScale">
+                                Better Trust Ventures
+                            </h1>
+                            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 opacity-0 animate-fadeInScale delay-200">
+                                Your trusted partner for growing businesses and enhancing home life.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fadeInScale delay-400">
+                                <button id="btnExplorePrograms"
+                                    class="px-8 py-4 bg-white text-indigo-700 rounded-full font-semibold shadow-lg hover:bg-indigo-50 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white">
+                                    Explore Programs
+                                </button>
+                                <button id="btnViewCartHome"
+                                    class="px-8 py-4 bg-yellow-400 text-gray-800 rounded-full font-semibold shadow-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-200">
+                                    <span id="cart-summary">🛒 0 items ($0.00)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-10">
+                        Our Comprehensive Categories
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        <!-- Card for Residential Services -->
+                        <div class="group bg-blue-100 p-8 rounded-xl shadow-lg border border-blue-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn"
+                            id="cardResidential">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-blue-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v6m-6 0V5a2 2 0 00-2-2H9a2 2 0 00-2 2v6"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Residential Services</h3>
+                            <p class="text-gray-700">Essential services for a comfortable and well-maintained home.</p>
+                        </div>
+
+                        <!-- Card for Affiliate Programs -->
+                        <div class="group bg-purple-100 p-8 rounded-xl shadow-lg border border-purple-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-100"
+                            id="cardAffiliate">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-purple-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-.758l3.67-3.67m-9.106 10.615l4 4a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-purple-800 mb-3">Affiliate Programs</h3>
+                            <p class="text-gray-700">Partner with us and grow your income promoting trusted services.</p>
+                        </div>
+
+                        <!-- Card for Business Programs -->
+                        <div class="group bg-emerald-100 p-8 rounded-xl shadow-lg border border-emerald-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-200"
+                            id="cardBusiness">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-emerald-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 4h2a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2m8 0V2M8 4V2m-2 4h12m-6 4v2m0-2v-2m0 2H10m4 0h-4"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-emerald-800 mb-3">Business Programs</h3>
+                            <p class="text-gray-700">Tailored solutions and growth strategies for various industries.</p>
+                        </div>
+
+                        <!-- Card for MusiX School -->
+                        <div class="group bg-pink-100 p-8 rounded-xl shadow-lg border border-pink-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-300"
+                            id="cardMusiXSchool">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-pink-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c-1.39 0-2.76-.23-4-.65M9 19c-.48-.12-1.02-.23-1.6-.33m-2.9-.84l-2.4 1.3M21 3l-3.32 1.83M21 3c1.39.81 2.76 1.48 4 2M21 3c.48.27 1.02.5 1.6.7"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-pink-800 mb-3">MusiX School</h3>
+                            <p class="text-gray-700">Unlock your musical potential with expert-led lessons and programs.</p>
+                        </div>
+
+                        <!-- Card for Doctrine -->
+                        <div class="group bg-gray-100 p-8 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-400"
+                            id="cardDoctrine">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-gray-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Doctrine</h3>
+                            <p class="text-gray-700">Deepen your understanding with comprehensive biblical commentaries.</p>
+                        </div>
+
+                        <!-- Card for Theological Position -->
+                        <div class="group bg-indigo-100 p-8 rounded-xl shadow-lg border border-indigo-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-500"
+                            id="cardTheologicalPosition">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-indigo-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-indigo-800 mb-3">Theological Position</h3>
+                            <p class="text-gray-700">Explore our core beliefs on salvation and faith.</p>
+                        </div>
+
+                        <!-- Card for Scholarship/Grant -->
+                        <div class="group bg-red-50 p-8 rounded-xl shadow-lg border border-red-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-600"
+                            id="cardScholarshipGrant">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-red-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h2a2 2 0 002-2V4a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2m10-9V4l-3 3m0 0l-3-3m3 3v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h3"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-red-800 mb-3">Scholarship / Grant</h3>
+                            <p class="text-gray-700">Apply for financial assistance to pursue your goals.</p>
+                        </div>
+
+                        <!-- Card for Schedule Consultation -->
+                        <div class="group bg-cyan-50 p-8 rounded-xl shadow-lg border border-cyan-200 transform hover:scale-105 transition-transform duration-300 cursor-pointer animate-bounceIn delay-700"
+                            id="cardScheduleConsultation">
+                            <svg class="w-16 h-16 mb-4 mx-auto text-cyan-700 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zm1-5h4m4 0h4"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-cyan-800 mb-3">Schedule Consultation</h3>
+                            <p class="text-gray-700">Book a personalized session with our experts.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-20">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-10">
+                            Why Choose Better Trust Ventures?
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div class="text-left animate-slideInLeft">
+                                <h3 class="text-2xl font-semibold text-indigo-700 mb-4">
+                                    Trusted Partnerships
+                                </h3>
+                                <p class="text-lg text-gray-700 mb-6">
+                                    We build lasting relationships based on transparency, reliability, and mutual growth. Your success is our priority.
+                                </p>
+                                <h3 class="text-2xl font-semibold text-indigo-700 mb-4">
+                                    Expert Guidance
+                                </h3>
+                                <p class="text-lg text-gray-700">
+                                    Access to a network of industry specialists and curated programs to accelerate your journey.
+                                </p>
+                            </div>
+                            <div class="animate-slideInRight">
+                                <img src="https://placehold.co/600x400/A0D2EB/000000?text=Collaboration+%26+Growth" alt="Two people collaborating with charts and graphs in the background, symbolizing growth." class="rounded-xl shadow-lg w-full h-auto object-cover border border-blue-200">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
+                            <div class="text-left animate-slideInLeft md:order-2">
+                                <h3 class="text-2xl font-semibold text-indigo-700 mb-4">
+                                    Innovative Solutions
+                                </h3>
+                                <p class="text-lg text-gray-700 mb-6">
+                                    Leverage cutting-edge strategies and technology to stay ahead in a competitive market.
+                                </p>
+                                <h3 class="text-2xl font-semibold text-indigo-700 mb-4">
+                                    Dedicated Support
+                                </h3>
+                                <p class="text-lg text-gray-700">
+                                    Our team is committed to providing personalized support every step of the way, ensuring your needs are met.
+                                </p>
+                            </div>
+                            <div class="animate-slideInRight md:order-1">
+                                <img src="https://placehold.co/600x400/D4A0E8/000000?text=Innovative+Solutions" alt="Abstract image representing innovative ideas and technology." class="rounded-xl shadow-lg w-full h-auto object-cover border border-purple-200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Attach event listeners AFTER the elements are added to the DOM
+            document.getElementById('btnExplorePrograms').addEventListener('click', () => alertMessage("Explore all our diverse programs by clicking on the categories below!", false));
+            document.getElementById('btnViewCartHome').addEventListener('click', renderCartPage);
+
+            document.getElementById('cardResidential').addEventListener('click', renderResidentialServicesPage);
+            document.getElementById('cardAffiliate').addEventListener('click', renderAffiliateProgramsPage);
+            document.getElementById('cardBusiness').addEventListener('click', renderBusinessProgramsOverviewPage);
+            // New homepage card event listeners
+            document.getElementById('cardMusiXSchool').addEventListener('click', renderMusiXSchoolPage);
+            document.getElementById('cardDoctrine').addEventListener('click', renderDoctrinePage);
+            document.getElementById('cardTheologicalPosition').addEventListener('click', renderTheologicalPositionPage);
+            document.getElementById('cardScholarshipGrant').addEventListener('click', renderScholarshipGrantPage);
+            document.getElementById('cardScheduleConsultation').addEventListener('click', renderScheduleConsultationPage); // New card listener
+
+            updateCartSummary(); // Initialize cart summary
+        }
+
+        // --- Accessibility Functions ---
+
+        /**
+         * Applies or removes accessibility classes to the body.
+         */
+        function applyAccessibilitySettings() {
+            const body = document.body;
+
+            // Remove all existing accessibility classes first to prevent conflicts
+            body.classList.remove('grayscale-mode', 'high-contrast-mode', 'font-size-large', 'font-size-xl', 'font-size-xxl');
+
+            // Apply Grayscale
+            if (isGrayscaleActive) {
+                body.classList.add('grayscale-mode');
+            }
+
+            // Apply High Contrast (this will override some colors, so order matters)
+            if (isHighContrastActive) {
+                body.classList.add('high-contrast-mode');
+            }
+
+            // Apply Font Size
+            if (fontSizeLevel === 1) {
+                body.classList.add('font-size-large');
+            } else if (fontSizeLevel === 2) {
+                body.classList.add('font-size-xl');
+            } else if (fontSizeLevel === 3) {
+                body.classList.add('font-size-xxl');
+            }
+        }
+
+        /**
+         * Toggles grayscale mode.
+         */
+        function toggleGrayscale() {
+            isGrayscaleActive = !isGrayscaleActive;
+            applyAccessibilitySettings();
+            alertMessage(`Grayscale mode ${isGrayscaleActive ? 'activated' : 'deactivated'}.`);
+        }
+
+        /**
+         * Toggles high contrast mode.
+         */
+        function toggleHighContrast() {
+            isHighContrastActive = !isHighContrastActive;
+            applyAccessibilitySettings();
+            alertMessage(`High contrast mode ${isHighContrastActive ? 'activated' : 'deactivated'}.`);
+        }
+
+        /**
+         * Increases font size in steps.
+         */
+        function increaseFontSize() {
+            if (fontSizeLevel < 3) {
+                fontSizeLevel++;
+                applyAccessibilitySettings();
+                alertMessage(`Font size increased (Level ${fontSizeLevel}).`);
+            } else {
+                alertMessage("Maximum font size reached.");
+            }
+        }
+
+        /**
+         * Decreases font size in steps.
+         */
+        function decreaseFontSize() {
+            if (fontSizeLevel > 0) {
+                fontSizeLevel--;
+                applyAccessibilitySettings();
+                alertMessage(`Font size decreased (Level ${fontSizeLevel}).`);
+            } else {
+                alertMessage("Minimum font size reached (Normal).");
+            }
+        }
+
+        /**
+         * Resets all accessibility settings.
+         */
+        function resetAccessibility() {
+            isGrayscaleActive = false;
+            isHighContrastActive = false;
+            fontSizeLevel = 0;
+            applyAccessibilitySettings();
+            alertMessage("All accessibility settings reset to default.");
+        }
+
+        /**
+         * Renders the accessibility panel modal.
+         */
+        function renderAccessibilityPanel() {
+            const existingPanel = document.getElementById('accessibility-panel-modal');
+            if (existingPanel) {
+                existingPanel.remove();
+                return; // Panel was open, now closed
+            }
+
+            const panelHtml = `
+                <div id="accessibility-panel-modal" class="fixed right-4 bottom-16 bg-white p-6 rounded-lg shadow-xl border border-gray-200 z-50 w-64 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Accessibility</h3>
+                    <div class="space-y-3">
+                        <button id="toggle-grayscale-btn" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                            ${isGrayscaleActive ? 'Disable Grayscale' : 'Enable Grayscale'}
+                        </button>
+                        <button id="toggle-high-contrast-btn" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                            ${isHighContrastActive ? 'Disable High Contrast' : 'Enable High Contrast'}
+                        </button>
+                        <div class="flex items-center justify-center space-x-2">
+                            <button id="decrease-font-btn" class="p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"></path></svg>
+                            </button>
+                            <span class="font-semibold text-gray-700">Font Size: Level ${fontSizeLevel}</span>
+                            <button id="increase-font-btn" class="p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </button>
+                        </div>
+                        <button id="reset-accessibility-btn" class="w-full px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400">
+                            Reset All
+                        </button>
+                    </div>
+                    <button id="close-accessibility-panel-btn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded-full p-1" aria-label="Close accessibility panel">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', panelHtml);
+
+            // Attach listeners to new panel buttons
+            document.getElementById('toggle-grayscale-btn').addEventListener('click', toggleGrayscale);
+            document.getElementById('toggle-high-contrast-btn').addEventListener('click', toggleHighContrast);
+            document.getElementById('increase-font-btn').addEventListener('click', increaseFontSize);
+            document.getElementById('decrease-font-btn').addEventListener('click', decreaseFontSize);
+            document.getElementById('reset-accessibility-btn').addEventListener('click', resetAccessibility);
+            document.getElementById('close-accessibility-panel-btn').addEventListener('click', () => {
+                document.getElementById('accessibility-panel-modal').remove();
+            });
+        }
+
+
+        // Function to render Residential Services Page
+        function renderResidentialServicesPage() {
+            const appContainer = document.getElementById('app-container');
+            // Ensure residentialCurrentView and residentialCurrentCategory are defined or reset if navigating from elsewhere
+            if (typeof residentialCurrentView === 'undefined') residentialCurrentView = 'category';
+            if (typeof residentialCurrentCategory === 'undefined') residentialCurrentCategory = '';
+
+            const renderContent = (view, categoryName = '') => {
+                let listHtml = '';
+                let title = 'All Residential Services';
+                let description = 'Browse our complete list of home and residential services.';
+                let currentItems = [];
+
+                if (view === 'category' && !categoryName) { // Showing main categories
+                    listHtml = Object.keys(residentialServiceCategories).map(cat => `
+                        <button class="bg-blue-100 border border-blue-200 text-blue-800 p-4 rounded-lg shadow hover:bg-blue-200 transition-colors duration-200 w-full font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 btn-select-category" data-category-name="${cat}">
+                            ${cat}
+                        </button>
+                    `).join('');
+                    title = 'Residential Service Categories';
+                    description = 'Select a category to view specific services, or toggle to see the full list.';
+                } else if (view === 'category' && categoryName) { // Showing items in a specific category
+                    currentItems = residentialServiceCategories[categoryName] || [];
+                    listHtml = currentItems.map(service => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-blue-100 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-2 sm:mb-0 sm:w-3/4">
+                                <p class="text-lg font-semibold text-blue-800">${service.name}</p>
+                                <p class="text-sm text-gray-600">${service.description}</p>
+                            </div>
+                            <div class="flex items-center sm:w-1/4 sm:justify-end">
+                                <span class="text-xl font-bold text-blue-700 mr-4">$${service.price.toFixed(2)}</span>
+                                <button data-id="${service.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                    Add
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = `${categoryName} Services`;
+                    description = `Services tailored for your ${categoryName.toLowerCase()} needs.`;
+                } else { // Full list view
+                    Object.values(residentialServiceCategories).flat().forEach(item => currentItems.push(item));
+                    listHtml = currentItems.map(service => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-blue-100 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-2 sm:mb-0 sm:w-3/4">
+                                <p class="text-lg font-semibold text-blue-800">${service.name}</p>
+                                <p class="text-sm text-gray-600">${service.description}</p>
+                            </div>
+                            <div class="flex items-center sm:w-1/4 sm:justify-end">
+                                <span class="text-xl font-bold text-blue-700 mr-4">$${service.price.toFixed(2)}</span>
+                                <button data-id="${service.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                    Add
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = 'All Residential Services';
+                    description = 'Browse our complete list of home and residential services.';
+                }
+
+                return `
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        ${title}
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        ${description}
+                    </p>
+                    <div class="flex justify-center gap-4 mb-6">
+                        <button id="toggle-category-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 ${residentialCurrentView === 'category' ? 'bg-blue-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            Category View
+                        </button>
+                        <button id="toggle-list-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 ${residentialCurrentView === 'list' ? 'bg-blue-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            List View
+                        </button>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 scrollable-content">
+                        ${listHtml ? `<ul class="${view === 'category' && !categoryName ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'divide-y divide-blue-200'}">${listHtml}</ul>` : '<p class="text-gray-600">No services found in this category.</p>'}
+                    </div>
+                    <div class="flex justify-center gap-4 mt-6">
+                        ${residentialCurrentCategory ? `
+                            <button id="btnBackToResidentialCategories"
+                                class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                Back to Categories
+                            </button>
+                        ` : ''}
+                        <button id="btnBackToHome"
+                            class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Back to Home
+                        </button>
+                    </div>
+                `;
+            };
+
+            appContainer.innerHTML = renderContent(residentialCurrentView, residentialCurrentCategory);
+
+            // Attach event listeners
+            document.getElementById('btnBackToHome').addEventListener('click', () => {
+                residentialCurrentView = 'category'; // Reset view
+                residentialCurrentCategory = ''; // Reset category
+                renderHomePage();
+            });
+            document.getElementById('toggle-category-view-btn').addEventListener('click', () => {
+                residentialCurrentView = 'category';
+                residentialCurrentCategory = '';
+                renderResidentialServicesPage();
+            });
+            document.getElementById('toggle-list-view-btn').addEventListener('click', () => {
+                residentialCurrentView = 'list';
+                residentialCurrentCategory = '';
+                renderResidentialServicesPage();
+            });
+            document.querySelectorAll('.btn-select-category').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    residentialCurrentView = 'category'; // Stay in category view
+                    residentialCurrentCategory = event.target.dataset.categoryName;
+                    renderResidentialServicesPage();
+                });
+            });
+            const btnBackToResidentialCategories = document.getElementById('btnBackToResidentialCategories');
+            if (btnBackToResidentialCategories) {
+                btnBackToResidentialCategories.addEventListener('click', () => {
+                    residentialCurrentCategory = ''; // Go back to main categories
+                    renderResidentialServicesPage();
+                });
+            }
+
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemId = event.target.dataset.id;
+                    let correctSourceArray = null;
+                    // Find the correct category array that contains this item
+                    for (const catKey in residentialServiceCategories) {
+                        const foundItem = residentialServiceCategories[catKey].find(service => service.id === itemId);
+                        if (foundItem) {
+                            correctSourceArray = residentialServiceCategories[catKey];
+                            break;
+                        }
+                    }
+                    if (correctSourceArray) {
+                        addToCart(itemId, correctSourceArray);
+                    } else {
+                        console.error('Residential service item not found in any category for ID:', itemId);
+                        alertMessage('Error: Could not add item. Item data missing.');
+                    }
+                });
+            });
+        }
+
+        // Function to render Affiliate Programs Page
+        function renderAffiliateProgramsPage() {
+            const appContainer = document.getElementById('app-container');
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        Affiliate Programs
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        Discover opportunities to partner with us through our various affiliate programs.
+                        Whether you're an influencer, a content creator, or a business, learn how you can earn by promoting our services.
+                    </p>
+
+                    ${isAffiliateSignedUp ? `
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
+                            <strong class="font-bold">Welcome, Affiliate!</strong>
+                            <span class="block sm:inline"> You are now eligible for a conceptual 50% discount on all services. (Discount not applied to cart calculation in this demo, but the "ULTIMATE50" or "AFFILIATE50" code can be used).</span>
+                        </div>
+                    ` : `
+                        <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6 text-left">
+                            <h3 class="font-semibold text-purple-800 text-xl mb-4">Sign Up for Our Affiliate Program!</h3>
+                            <p class="text-gray-700 mb-4">
+                                Join our network and get a **conceptual 50% discount** on all our residential and business programs.
+                                This discount is for demonstration purposes in this single-page HTML file and will not persist or apply to actual cart calculations directly. Use code "ULTIMATE50" or "AFFILIATE50" in the cart!
+                            </p>
+                            <form id="affiliate-signup-form" class="space-y-4">
+                                <div>
+                                    <label for="affiliate-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="affiliate-name" name="name" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                                        placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="affiliate-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="affiliate-email" name="email" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                                        placeholder="you@example.com">
+                                </div>
+                                <div>
+                                    <label for="affiliate-password" class="block text-sm font-medium text-gray-700">Password</label>
+                                    <input type="password" id="affiliate-password" name="password" required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                                        placeholder="••••••••">
+                                </div>
+                                <button type="submit"
+                                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300">
+                                    Sign Up Now
+                                </button>
+                            </form>
+                        </div>
+                    `}
+
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
+                        <h3 class="font-semibold text-purple-800">Why Become an Affiliate?</h3>
+                        <ul class="list-disc list-inside text-left text-gray-700 mt-2 space-y-1">
+                            <li>Generous commission structure</li>
+                            <li>Access to marketing materials</li>
+                            <li>Performance tracking dashboard</li>
+                            <li>Dedicated affiliate support</li>
+                        </ul>
+                    </div>
+                    <button id="btnBackToHome"
+                        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+            // Attach event listeners after content is rendered
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+
+            if (!isAffiliateSignedUp) {
+                document.getElementById('affiliate-signup-form').addEventListener('submit', handleAffiliateSignup);
+            }
+        }
+
+        /**
+         * Handles the conceptual affiliate signup.
+         * @param {Event} event - The form submission event.
+         */
+        function handleAffiliateSignup(event) {
+            event.preventDefault(); // Prevent default form submission
+            const name = document.getElementById('affiliate-name').value;
+            const email = document.getElementById('affiliate-email').value;
+            // In a real app, you'd send this data to a backend for processing
+            console.log(`Affiliate Signup Attempt: Name - ${name}, Email - ${email}`);
+
+            // Conceptual signup success
+            isAffiliateSignedUp = true;
+            alertMessage(`Congratulations, ${name}! You are conceptually signed up as an affiliate and eligible for a 50% discount on all services! (This status is not persistent in this demo. Use code "ULTIMATE50" or "AFFILIATE50" in the cart to see the discount applied.)`);
+            renderAffiliateProgramsPage(); // Re-render to show success message
+        }
+
+        // Business Programs Overview Page (with subcategories)
+        function renderBusinessProgramsOverviewPage() {
+            const appContainer = document.getElementById('app-container');
+            // Dynamically generate buttons for all categories in businessPlanCategories
+            const categoryButtonsHtml = Object.keys(businessPlanCategories).map(categoryName => {
+                let buttonColorClass = 'bg-gray-700 hover:bg-gray-800 focus:ring-gray-500'; // Default
+                let textColorClass = 'text-white'; // Default text color
+
+                if (categoryName === 'Plumber') buttonColorClass = 'bg-teal-500 hover:bg-teal-600 focus:ring-teal-300';
+                else if (categoryName === 'Roofer') buttonColorClass = 'bg-orange-500 hover:bg-orange-600 focus:ring-orange-300';
+                else if (categoryName === 'Carpenter') buttonColorClass = 'bg-stone-500 hover:bg-stone-600 focus:ring-stone-300';
+                else if (categoryName === 'Lawn Specialist') buttonColorClass = 'bg-lime-600 hover:bg-lime-700 focus:ring-lime-300';
+                else if (categoryName === 'Elevator Mechanic') buttonColorClass = 'bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-300';
+                else if (categoryName === 'Zookeeper/Animal Care') buttonColorClass = 'bg-pink-500 hover:bg-pink-600 focus:ring-pink-300';
+                else if (categoryName === 'Veterinarian') buttonColorClass = 'bg-green-500 hover:bg-green-600 focus:ring-green-300';
+                else if (categoryName === 'Farm Keeper') buttonColorClass = 'bg-amber-600 hover:bg-amber-700 focus:ring-amber-300';
+                else if (categoryName === 'Baker/Confectioner') buttonColorClass = 'bg-rose-500 hover:bg-rose-600 focus:ring-rose-300';
+                else if (categoryName === 'Event Planner') buttonColorClass = 'bg-fuchsia-500 hover:bg-fuchsia-600 focus:ring-fuchsia-300';
+                else if (categoryName === 'Web Developer') buttonColorClass = 'bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-300';
+                else if (categoryName === 'Graphic Designer') buttonColorClass = 'bg-violet-600 hover:bg-violet-700 focus:ring-violet-300';
+                else if (categoryName === 'Personal Trainer') buttonColorClass = 'bg-red-600 hover:bg-red-700 focus:ring-red-300';
+                else if (categoryName === 'Restaurant Owner') buttonColorClass = 'bg-orange-700 hover:bg-orange-800 focus:ring-orange-500';
+                else if (categoryName === 'Hair Stylist/Salon Owner') buttonColorClass = 'bg-purple-500 hover:bg-purple-600 focus:ring-purple-300';
+                else if (categoryName === 'Photographer') {
+                    buttonColorClass = 'bg-blue-gray-500 hover:bg-blue-gray-600 focus:ring-blue-gray-300';
+                    textColorClass = 'text-gray-900'; // Darker text for blue-gray background
+                }
+                else if (categoryName === 'Electrician') buttonColorClass = 'bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-300';
+                else if (categoryName === 'Landscaper') buttonColorClass = 'bg-green-700 hover:bg-green-800 focus:ring-green-500';
+                else if (categoryName === 'Childcare Provider') buttonColorClass = 'bg-sky-500 hover:bg-sky-600 focus:ring-sky-300';
+                else if (categoryName === 'MusiX School') buttonColorClass = 'bg-purple-800 hover:bg-purple-900 focus:ring-purple-600'; // Consistent new color
+                else if (categoryName === 'Doctrine') buttonColorClass = 'bg-gray-600 hover:bg-gray-700 focus:ring-gray-400'; // Consistent new color
+
+
+                // Adjust button width for general category to span full width on small screens
+                const buttonWidthClass = categoryName === 'General' ? 'col-span-full sm:col-span-2 lg:col-span-1 mx-auto w-full sm:w-auto' : '';
+
+                return `
+                    <button data-trade-name="${categoryName}"
+                        class="btn-trade-category p-4 ${buttonColorClass} ${textColorClass} rounded-lg shadow transition-colors duration-300 focus:outline-none focus:ring-4 ${buttonWidthClass}">
+                        ${categoryName} Business Plans
+                    </button>
+                `;
+            }).join('');
+
+
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        Business Programs
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        Explore our tailored business solutions by selecting a specific trade category.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <!-- Dynamically generated Trade Category Buttons -->
+                        ${categoryButtonsHtml}
+                    </div>
+
+                    <button id="btnBackToHome"
+                        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+            // Attach event listeners after content is rendered
+            document.querySelectorAll('.btn-trade-category').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const tradeName = event.target.dataset.tradeName;
+                    const plansArray = businessPlanCategories[tradeName];
+                    renderTradeBusinessPlansPage(tradeName, plansArray);
+                });
+            });
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+        }
+
+        // Function to render specific Trade Business Plans Page
+        function renderTradeBusinessPlansPage(tradeName, plansArray) {
+            const appContainer = document.getElementById('app-container');
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        ${tradeName} Business Plans
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        Here are our specialized business plans designed for ${tradeName.toLowerCase()} professionals.
+                    </p>
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6 scrollable-content">
+                        <ul id="trade-plans-list" class="divide-y divide-emerald-200">
+                            ${plansArray.map(plan => `
+                                <li class="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between">
+                                    <div class="text-left mb-2 sm:mb-0 sm:w-3/4">
+                                        <p class="text-lg font-semibold text-emerald-800">${plan.name}</p>
+                                        <p class="text-sm text-gray-600">${plan.description}</p>
+                                    </div>
+                                    <div class="flex items-center sm:w-1/4 sm:justify-end">
+                                        <span class="text-xl font-bold text-emerald-700 mr-4">$${plan.price.toFixed(2)}</span>
+                                        <button data-id="${plan.id}"
+                                            class="add-to-cart-btn px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                                            Add
+                                        </button>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-6">
+                        <button id="btnBackToBusinessOverview"
+                            class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Back to Business Programs
+                        </button>
+                        <button id="btnBackToHome"
+                            class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Back to Home
+                        </button>
+                    </div>
+                </div>
+            `;
+            // Attach event listeners after content is rendered
+            document.getElementById('btnBackToBusinessOverview').addEventListener('click', renderBusinessProgramsOverviewPage);
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemId = event.target.dataset.id;
+                    // Determine which array to use based on the trade name passed to this function
+                    const sourceArray = businessPlanCategories[tradeName];
+                    if (sourceArray) {
+                        addToCart(itemId, sourceArray);
+                    } else {
+                        console.error('Source array not found for trade:', tradeName);
+                        alertMessage('Error: Could not add item. Invalid trade category.');
+                    }
+                });
+            });
+        }
+
+        // --- NEW PAGES ---
+
+        // Function to render MusiX School Page
+        function renderMusiXSchoolPage() {
+            const appContainer = document.getElementById('app-container');
+            // Ensure musiXCurrentView and musiXCurrentCategory are defined or reset
+            if (typeof musiXCurrentView === 'undefined') musiXCurrentView = 'category';
+            if (typeof musiXCurrentCategory === 'undefined') musiXCurrentCategory = '';
+
+            const renderContent = (view, categoryName = '') => {
+                let listHtml = '';
+                let title = 'All MusiX School Programs';
+                let description = 'Explore our wide range of music lessons designed for all ages and skill levels, from individual instrument instruction to band and orchestra coaching. All prices listed are per hour, unless specified.';
+                let currentItems = [];
+
+                if (view === 'category' && !categoryName) { // Showing main categories
+                    listHtml = Object.keys(musiXSchoolCategories).map(cat => `
+                        <button class="bg-pink-100 border border-pink-200 text-pink-800 p-4 rounded-lg shadow hover:bg-pink-200 transition-colors duration-200 w-full font-semibold focus:outline-none focus:ring-2 focus:ring-pink-300 btn-select-category" data-category-name="${cat}">
+                            ${cat}
+                        </button>
+                    `).join('');
+                    title = 'MusiX School Categories';
+                    description = 'Select an instrument family or study area, or toggle to see the full list of lessons.';
+                } else if (view === 'category' && categoryName) { // Showing items in a specific category
+                    currentItems = musiXSchoolCategories[categoryName] || [];
+                    listHtml = currentItems.map(lesson => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-pink-100 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-2 sm:mb-0 sm:w-3/4">
+                                <p class="text-lg font-semibold text-pink-800">${lesson.name}</p>
+                                <p class="text-sm text-gray-600">${lesson.description}</p>
+                            </div>
+                            <div class="flex items-center sm:w-1/4 sm:justify-end">
+                                <span class="text-xl font-bold text-pink-700 mr-4">$${lesson.price.toFixed(2)}</span>
+                                <button data-id="${lesson.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                                    Add
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = `${categoryName} Lessons`;
+                    description = `Explore our ${categoryName.toLowerCase()} lessons.`;
+                } else { // Full list view
+                    // Get all items from all sub-categories and flatten them
+                    Object.values(musiXSchoolCategories).forEach(categoryArray => {
+                        categoryArray.forEach(item => currentItems.push(item));
+                    });
+                    listHtml = currentItems.map(lesson => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-pink-100 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-2 sm:mb-0 sm:w-3/4">
+                                <p class="text-lg font-semibold text-pink-800">${lesson.name}</p>
+                                <p class="text-sm text-gray-600">${lesson.description}</p>
+                            </div>
+                            <div class="flex items-center sm:w-1/4 sm:justify-end">
+                                <span class="text-xl font-bold text-pink-700 mr-4">$${lesson.price.toFixed(2)}</span>
+                                <button data-id="${lesson.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                                    Add
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = 'All MusiX School Programs';
+                    description = 'Explore our wide range of music lessons designed for all ages and skill levels, from individual instrument instruction to band and orchestra coaching. All prices listed are per hour, unless specified.';
+                }
+
+                return `
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        ${title}
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        ${description}
+                    </p>
+                    <div class="flex justify-center gap-4 mb-6">
+                        <button id="toggle-category-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-pink-300 ${musiXCurrentView === 'category' ? 'bg-pink-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            Category View
+                        </button>
+                        <button id="toggle-list-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-pink-300 ${musiXCurrentView === 'list' ? 'bg-pink-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            List View
+                        </button>
+                    </div>
+                    <div class="bg-pink-50 border border-pink-200 rounded-lg p-4 mb-6 scrollable-content">
+                        ${listHtml ? `<ul class="${(view === 'category' && !categoryName) ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'divide-y divide-pink-200'}">${listHtml}</ul>` : '<p class="text-gray-600">No lessons found in this category.</p>'}
+                    </div>
+                    <div class="flex justify-center gap-4 mt-6">
+                        ${musiXCurrentCategory ? `
+                            <button id="btnBackToMusiXCategories"
+                                class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                Back to Categories
+                            </button>
+                        ` : ''}
+                        <button id="btnBackToHome"
+                            class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Back to Home
+                        </button>
+                    </div>
+                `;
+            };
+
+            appContainer.innerHTML = renderContent(musiXCurrentView, musiXCurrentCategory);
+
+            // Attach event listeners
+            document.getElementById('btnBackToHome').addEventListener('click', () => {
+                musiXCurrentView = 'category';
+                musiXCurrentCategory = '';
+                renderHomePage();
+            });
+            document.getElementById('toggle-category-view-btn').addEventListener('click', () => {
+                musiXCurrentView = 'category';
+                musiXCurrentCategory = '';
+                renderMusiXSchoolPage();
+            });
+            document.getElementById('toggle-list-view-btn').addEventListener('click', () => {
+                musiXCurrentView = 'list';
+                musiXCurrentCategory = '';
+                renderMusiXSchoolPage();
+            });
+            document.querySelectorAll('.btn-select-category').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    musiXCurrentView = 'category'; // Stay in category view
+                    musiXCurrentCategory = event.target.dataset.categoryName;
+                    renderMusiXSchoolPage();
+                });
+            });
+            const btnBackToMusiXCategories = document.getElementById('btnBackToMusiXCategories');
+            if (btnBackToMusiXCategories) {
+                btnBackToMusiXCategories.addEventListener('click', () => {
+                    musiXCurrentCategory = '';
+                    renderMusiXSchoolPage();
+                });
+            }
+
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemId = event.target.dataset.id;
+                    let correctSourceArray = null;
+                    // Find the correct category array that contains this item
+                    for (const catKey in musiXSchoolCategories) {
+                        const foundItem = musiXSchoolCategories[catKey].find(lesson => lesson.id === itemId);
+                        if (foundItem) {
+                            correctSourceArray = musiXSchoolCategories[catKey];
+                            break;
+                        }
+                    }
+                    if (correctSourceArray) {
+                        addToCart(itemId, correctSourceArray);
+                    } else {
+                        console.error('MusiX lesson item not found in any category for ID:', itemId);
+                        alertMessage('Error: Could not add item. Item data missing.');
+                    }
+                });
+            });
+        }
+
+        // Function to render Doctrine Page
+        function renderDoctrinePage() {
+            const appContainer = document.getElementById('app-container');
+            // Ensure doctrineCurrentView and doctrineCurrentBookTestament are defined or reset
+            if (typeof doctrineCurrentView === 'undefined') doctrineCurrentView = 'category';
+            if (typeof doctrineCurrentBookTestament === 'undefined') doctrineCurrentBookTestament = '';
+            if (typeof doctrineCurrentBookCategory === 'undefined') doctrineCurrentBookCategory = '';
+
+
+            const renderContent = (view, testamentName = '', categoryName = '') => {
+                let listHtml = '';
+                let title = 'All King James Bible Commentaries';
+                let description = 'Deepen your biblical understanding with comprehensive commentaries on every book of the King James Bible. Each commentary offers insightful verse-by-verse analysis.';
+                let currentItems = [];
+                let backButtonText = '';
+
+                if (view === 'category' && !testamentName) { // Showing Old/New Testament categories
+                    listHtml = Object.keys(doctrineCategories).map(testament => `
+                        <button class="bg-gray-100 border border-gray-200 text-gray-800 p-4 rounded-lg shadow hover:bg-gray-200 transition-colors duration-200 w-full font-semibold focus:outline-none focus:ring-2 focus:ring-gray-300 btn-select-testament" data-testament-name="${testament}">
+                            ${testament}
+                        </button>
+                    `).join('');
+                    title = 'Bible Commentary Testaments';
+                    description = 'Select a Testament to explore its books, or toggle to see the full list.';
+                } else if (view === 'category' && testamentName && !categoryName) { // Showing book categories within a testament
+                    const bookCategories = doctrineCategories[testamentName];
+                    listHtml = Object.keys(bookCategories).map(cat => `
+                        <button class="bg-gray-100 border border-gray-200 text-gray-800 p-4 rounded-lg shadow hover:bg-gray-200 transition-colors duration-200 w-full font-semibold focus:outline-none focus:ring-2 focus:ring-gray-300 btn-select-book-category" data-testament-name="${testamentName}" data-category-name="${cat}">
+                            ${cat}
+                        </button>
+                    `).join('');
+                    title = `${testamentName} Book Categories`;
+                    description = `Browse books by category within the ${testamentName}.`;
+                    backButtonText = `Back to Testaments`;
+                } else if (view === 'category' && testamentName && categoryName) { // Showing items in a specific book category
+                    currentItems = doctrineCategories[testamentName][categoryName] || [];
+                    listHtml = currentItems.map(commentary => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-gray-50 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-3 sm:mb-0 sm:w-3/5">
+                                <p class="text-lg font-semibold text-gray-800">${commentary.name}</p>
+                                <p class="text-sm text-gray-600">${commentary.description}</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center sm:w-2/5 sm:justify-end gap-2 sm:gap-4 w-full">
+                                <span class="text-xl font-bold text-gray-700">$${commentary.price.toFixed(2)}</span>
+                                <button data-id="${commentary.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                                    Add to Cart <span class="text-xs ml-1 whitespace-nowrap">(Hard Copy)</span>
+                                </button>
+                                <button data-id="${commentary.id}"
+                                    class="view-now-btn px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                    View Now
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = `${testamentName} - ${categoryName}`;
+                    description = `Commentaries in the ${categoryName.toLowerCase()} section of the ${testamentName}.`;
+                    backButtonText = `Back to ${testamentName} Categories`;
+                } else { // Full list view
+                    // Flatten all commentaries for the full list view
+                    for (const testamentKey in doctrineCategories) {
+                        for (const categoryKey in doctrineCategories[testamentKey]) {
+                            doctrineCategories[testamentKey][categoryKey].forEach(item => currentItems.push(item));
+                        }
+                    }
+                    listHtml = currentItems.map(commentary => `
+                        <li class="py-4 px-2 flex flex-col sm:flex-row items-start sm:items-center justify-between group hover:bg-gray-50 transition-colors duration-200 rounded-lg">
+                            <div class="text-left mb-3 sm:mb-0 sm:w-3/5">
+                                <p class="text-lg font-semibold text-gray-800">${commentary.name}</p>
+                                <p class="text-sm text-gray-600">${commentary.description}</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center sm:w-2/5 sm:justify-end gap-2 sm:gap-4 w-full">
+                                <span class="text-xl font-bold text-gray-700">$${commentary.price.toFixed(2)}</span>
+                                <button data-id="${commentary.id}"
+                                    class="add-to-cart-btn px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                                    Add to Cart <span class="text-xs ml-1 whitespace-nowrap">(Hard Copy)</span>
+                                </button>
+                                <button data-id="${commentary.id}"
+                                    class="view-now-btn px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                    View Now
+                                </button>
+                            </div>
+                        </li>
+                    `).join('');
+                    title = 'All King James Bible Commentaries';
+                    description = 'Deepen your biblical understanding with comprehensive commentaries on every book of the King James Bible. Each commentary offers insightful verse-by-verse analysis.';
+                }
+
+                return `
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        ${title}
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        ${description}
+                    </p>
+                    <div class="flex justify-center gap-4 mb-6">
+                        <button id="toggle-category-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 ${doctrineCurrentView === 'category' ? 'bg-gray-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            Category View
+                        </button>
+                        <button id="toggle-list-view-btn" class="px-6 py-2 rounded-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 ${doctrineCurrentView === 'list' ? 'bg-gray-600 text-white active-toggle-btn' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}">
+                            List View
+                        </button>
+                    </div>
+                    <div class="bg-gray-100 border border-gray-200 rounded-lg p-4 mb-6 scrollable-content">
+                        ${listHtml ? `<ul class="${(view === 'category' && !testamentName) || (view === 'category' && testamentName && !categoryName) ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'divide-y divide-gray-300'}">${listHtml}</ul>` : '<p class="text-gray-600">No commentaries found in this category.</p>'}
+                    </div>
+                    <div class="flex justify-center gap-4 mt-6">
+                        ${backButtonText ? `
+                            <button id="btnBackInDoctrine"
+                                class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                ${backButtonText}
+                            </button>
+                        ` : ''}
+                        <button id="btnBackToHome"
+                            class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                            Back to Home
+                        </button>
+                    </div>
+                `;
+            };
+
+            appContainer.innerHTML = renderContent(doctrineCurrentView, doctrineCurrentBookTestament, doctrineCurrentBookCategory);
+
+            // Attach event listeners
+            document.getElementById('btnBackToHome').addEventListener('click', () => {
+                doctrineCurrentView = 'category';
+                doctrineCurrentBookTestament = '';
+                doctrineCurrentBookCategory = '';
+                renderHomePage();
+            });
+            document.getElementById('toggle-category-view-btn').addEventListener('click', () => {
+                doctrineCurrentView = 'category';
+                doctrineCurrentBookTestament = ''; // Reset to top-level categories
+                doctrineCurrentBookCategory = '';
+                renderDoctrinePage();
+            });
+            document.getElementById('toggle-list-view-btn').addEventListener('click', () => {
+                doctrineCurrentView = 'list';
+                doctrineCurrentBookTestament = '';
+                doctrineCurrentBookCategory = '';
+                renderDoctrinePage();
+            });
+
+            document.querySelectorAll('.btn-select-testament').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    doctrineCurrentView = 'category'; // Stay in category view
+                    doctrineCurrentBookTestament = event.target.dataset.testamentName;
+                    doctrineCurrentBookCategory = ''; // Reset book category
+                    renderDoctrinePage();
+                });
+            });
+            document.querySelectorAll('.btn-select-book-category').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    doctrineCurrentView = 'category'; // Stay in category view
+                    doctrineCurrentBookTestament = event.target.dataset.testamentName;
+                    doctrineCurrentBookCategory = event.target.dataset.categoryName;
+                    renderDoctrinePage();
+                });
+            });
+
+            const btnBackInDoctrine = document.getElementById('btnBackInDoctrine');
+            if (btnBackInDoctrine) {
+                btnBackInDoctrine.addEventListener('click', () => {
+                    if (doctrineCurrentBookCategory) {
+                        doctrineCurrentBookCategory = ''; // Go back from specific book category to testament book categories
+                    } else if (doctrineCurrentBookTestament) {
+                        doctrineCurrentBookTestament = ''; // Go back from testament book categories to main testaments
+                    }
+                    renderDoctrinePage();
+                });
+            }
+
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemId = event.target.dataset.id;
+                    addToCart(itemId, doctrineBibleCommentaries); // Doctrine items are always from this flat list
+                });
+            });
+            document.querySelectorAll('.view-now-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemId = event.target.dataset.id;
+                    const commentary = doctrineBibleCommentaries.find(c => c.id === itemId);
+                    if (commentary) {
+                        renderCommentaryViewerModal(commentary.name, commentary.description);
+                    } else {
+                        alertMessage('Commentary details not found.');
+                    }
+                });
+            });
+        }
+
+        // --- NEW THEOLOGICAL POSITION PAGE ---
+        function renderTheologicalPositionPage() {
+            const appContainer = document.getElementById('app-container');
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        Our Theological Position
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        We believe in a Christian theological framework, specifically emphasizing **Faith Alone** for salvation during the **Age of Grace**, within a **Dispensational** understanding of biblical interpretation.
+                    </p>
+
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6 mb-8 text-left">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-4">Frequently Asked Questions about Salvation and Faith</h3>
+
+                        <div class="space-y-6">
+                            <!-- FAQ 1 -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Q: How is a person saved?</h4>
+                                <p class="text-gray-700">
+                                    A: We believe salvation is by **Faith Alone**, through God's grace. It is not earned by works, but received as a free gift through belief in Jesus Christ. This means simply trusting in Christ's finished work on the cross for the forgiveness of sins.
+                                </p>
+                                <p class="text-sm text-gray-600 mt-2">
+                                    **Supporting Verses (KJV) for Faith Alone in the Age of Grace:**
+                                    <ul class="list-disc list-inside text-xs text-gray-600 pl-4 space-y-1">
+                                        <li>**Ephesians 2:8-9:** "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast."</li>
+                                        <li>**Romans 3:28:** "Therefore we conclude that a man is justified by faith without the deeds of the law."</li>
+                                        <li>**Romans 4:5:** "But to him that worketh not, but believeth on him that justifieth the ungodly, his faith is counted for righteousness."</li>
+                                        <li>**Titus 3:5:** "Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost;"</li>
+                                        <li>**Galatians 2:16:** "Knowing that a man is not justified by the works of the law, but by the faith of Jesus Christ, even we have believed in Jesus Christ, that we might be justified by the faith of Christ, and not by the works of the law: for by the works of the law shall no flesh be justified."</li>
+                                    </ul>
+                                </p>
+                            </div>
+
+                            <!-- FAQ 2 -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Q: What does "Dispensational Salvation" mean?</h4>
+                                <p class="text-gray-700">
+                                    A: Our understanding is **Dispensational**, meaning we believe God has administered His plan through different ages or "dispensations," each with unique responsibilities and revelations. Salvation has always been by God's grace, but the *specific content of faith* and the *means of demonstrating that faith* have varied according to God's progressive revelation.
+                                </p>
+                                <p class="text-gray-700 mt-2">
+                                    During the current **Age of Grace**, salvation is by faith alone in the finished work of Jesus Christ on the cross. This is distinct from earlier dispensations where obedience to specific covenants (like the Mosaic Law) was required in conjunction with faith in God.
+                                </p>
+                            </div>
+
+                            <!-- FAQ 3 -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Q: What does it mean to be "Christian"?</h4>
+                                <p class="text-gray-700">
+                                    A: To be **Christian** means to be a follower of Jesus Christ. It implies belief in Jesus as the Son of God, who died for our sins and rose again, and who is the sole mediator between God and humanity. It means accepting His teachings and seeking to live a life that honors Him.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btnBackToHome"
+                        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+            // Attach event listener after content is rendered
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+        }
+
+        // --- NEW SCHOLARSHIP/GRANT PAGE ---
+        let currentEssayText = ""; // Variable to hold the essay text for LLM feedback
+        let currentLLMFeedback = ""; // Variable to hold LLM generated feedback
+        let isFeedbackGenerating = false; // Flag for LLM generation status
+
+        function renderScholarshipGrantPage() {
+            const allPurchasableItems = getAllPurchasableItems(); // Get all items for the checkbox list
+            const appContainer = document.getElementById('app-container');
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        Scholarship / Grant Application
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        Apply for a grant to receive financial assistance for our programs. Please select the items you wish to receive funding for and tell us why you deserve this opportunity.
+                    </p>
+
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-8 text-left">
+                        <form id="grant-application-form" class="space-y-6">
+                            <!-- Applicant Info -->
+                            <div>
+                                <label for="applicant-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="applicant-name" name="name" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                                    placeholder="Your Full Name">
+                            </div>
+                            <div>
+                                <label for="applicant-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="applicant-email" name="email" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                                    placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label for="applicant-phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                                <input type="tel" id="applicant-phone" name="phone"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                                    placeholder="(123) 456-7890">
+                            </div>
+
+                            <!-- Program Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Programs/Services (Choose all that apply for the grant):</label>
+                                <div class="scrollable-content bg-white p-4 rounded-md border border-gray-300">
+                                    ${allPurchasableItems.map(item => `
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="grant-item-${item.id}" name="grant-items" value="${item.id}"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                                            <label for="grant-item-${item.id}" class="ml-2 text-sm text-gray-700">${item.name} ($${item.price.toFixed(2)}) - ${item.type}</label>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Essay Question -->
+                            <div>
+                                <label for="why-deserve-grant" class="block text-sm font-medium text-gray-700">Why do you deserve this grant? (Minimum 100 words)</label>
+                                <textarea id="why-deserve-grant" name="why-deserve-grant" rows="8" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                                    placeholder="Share your story and how this grant will impact your business or life...">${currentEssayText}</textarea>
+                            </div>
+
+                            <!-- LLM Feature Button -->
+                            <div class="flex justify-center mt-4">
+                                <button type="button" id="get-essay-feedback-btn"
+                                    class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md shadow transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    ${isFeedbackGenerating || currentEssayText.split(' ').length < 10 ? 'disabled' : ''}>
+                                    ${isFeedbackGenerating ? 'Generating Feedback...' : '✨ Get Essay Feedback'}
+                                </button>
+                            </div>
+
+                            <!-- LLM Feedback Display -->
+                            ${currentLLMFeedback ? `
+                                <div class="mt-6 p-4 bg-purple-100 rounded-lg border border-purple-300 text-left">
+                                    <h3 class="text-lg font-bold text-purple-800 mb-2">AI Feedback on Your Essay:</h3>
+                                    <p class="text-gray-800 whitespace-pre-wrap">${currentLLMFeedback}</p>
+                                </div>
+                            ` : ''}
+
+
+                            <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-300 mt-6">
+                                Submit Grant Application
+                            </button>
+                        </form>
+                    </div>
+
+                    <p class="text-lg text-gray-700 font-semibold mt-8">
+                        Thank you for your application! The review process typically takes <span class="text-red-700 font-bold">6-8 weeks</span>. We will notify you of our decision via email.
+                    </p>
+
+                    <button id="btnBackToHome"
+                        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300 mt-8">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+            // Attach event listener after content is rendered
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+            document.getElementById('grant-application-form').addEventListener('submit', handleGrantApplicationSubmit);
+
+            // LLM specific event listener and logic
+            const essayTextarea = document.getElementById('why-deserve-grant');
+            essayTextarea.addEventListener('input', (event) => {
+                currentEssayText = event.target.value;
+                // Re-render the button state (enabled/disabled)
+                const feedbackBtn = document.getElementById('get-essay-feedback-btn');
+                if (feedbackBtn) {
+                    if (isFeedbackGenerating || currentEssayText.split(' ').length < 10) {
+                        feedbackBtn.setAttribute('disabled', 'true');
+                        feedbackBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    } else {
+                        feedbackBtn.removeAttribute('disabled');
+                        feedbackBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+            });
+
+            document.getElementById('get-essay-feedback-btn').addEventListener('click', generateEssayFeedback);
+        }
+
+        /**
+         * Handles the conceptual submission of the grant application form.
+         * In a real application, this would send data to a backend.
+         * @param {Event} event - The form submission event.
+         */
+        function handleGrantApplicationSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const applicantName = document.getElementById('applicant-name').value;
+            const applicantEmail = document.getElementById('applicant-email').value;
+            const whyDeserveGrant = document.getElementById('why-deserve-grant').value;
+
+            // Basic validation for questionnaire length
+            if (whyDeserveGrant.split(' ').length < 100) {
+                alertMessage("Please provide at least 100 words in the 'Why you deserve this grant?' section.");
+                return;
+            }
+
+            const selectedItems = Array.from(document.querySelectorAll('input[name="grant-items"]:checked'))
+                                      .map(checkbox => {
+                                          const item = getAllPurchasableItems().find(i => i.id === checkbox.value);
+                                          return item ? `${item.name} ($${item.price.toFixed(2)})` : `Unknown Item (ID: ${checkbox.value})`;
+                                      });
+
+            console.log("Grant Application Submitted:");
+            console.log("Name:", applicantName);
+            console.log("Email:", applicantEmail);
+            console.log("Selected Items:", selectedItems);
+            console.log("Why Deserve Grant:", whyDeserveGrant);
+
+            alertMessage(`Thank you, ${applicantName}! Your grant application has been submitted. We will review it within 6-8 weeks and notify you via email.`);
+
+            // Optionally clear the form
+            event.target.reset();
+            currentEssayText = ""; // Clear essay text
+            currentLLMFeedback = ""; // Clear feedback
+            renderScholarshipGrantPage(); // Re-render to clear LLM feedback display
+        }
+
+        /**
+         * Generates essay feedback using the Gemini API.
+         */
+        async function generateEssayFeedback() {
+            if (currentEssayText.split(' ').length < 10) {
+                alertMessage("Please write at least 10 words in your essay to get feedback.");
+                return;
+            }
+
+            isFeedbackGenerating = true;
+            currentLLMFeedback = ""; // Clear previous feedback
+            renderScholarshipGrantPage(); // Re-render to show loading state
+
+            try {
+                const prompt = `Review the following essay submitted for a grant application. Provide constructive feedback on its clarity, persuasiveness, completeness, and any suggestions for improvement. Keep the feedback concise and actionable.
+
+Essay:
+"${currentEssayText}"`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    currentLLMFeedback = text;
+                } else {
+                    currentLLMFeedback = "Could not generate feedback. Please try again.";
+                }
+            } catch (error) {
+                console.error("Error generating feedback:", error);
+                currentLLMFeedback = "An error occurred while generating feedback. Please try again.";
+            } finally {
+                isFeedbackGenerating = false;
+                renderScholarshipGrantPage(); // Re-render to show feedback or error
+            }
+        }
+
+
+        // --- NEW SCHEDULE CONSULTATION PAGE ---
+        let selectedConsultationDate = null;
+        let selectedConsultationTime = null;
+        let selectedConsultationType = 'standard'; // 'standard' or 'priority'
+
+        // Helper to get a date two weeks from now
+        function getEarliestConsultationDate() {
+            const today = new Date();
+            today.setDate(today.getDate() + 14); // 2 weeks out
+            return today;
+        }
+
+        function generateCalendar(year, month) {
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const today = new Date();
+            const earliestBookingDate = getEarliestConsultationDate();
+
+            let calendarHtml = '<div class="grid grid-cols-7 gap-1 text-xs sm:text-sm font-semibold text-gray-700 mb-2">';
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                calendarHtml += `<div class="text-center">${day}</div>`;
+            });
+            calendarHtml += '</div>';
+
+            calendarHtml += '<div class="grid grid-cols-7 gap-1">';
+            // Fill leading empty days
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                calendarHtml += '<div class="p-2"></div>';
+            }
+
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const currentDate = new Date(year, month, day);
+                // Ensure date comparison is accurate by setting hours to 0 for both dates
+                const normalizedCurrentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+                const normalizedEarliestBookingDate = new Date(earliestBookingDate.getFullYear(), earliestBookingDate.getMonth(), earliestBookingDate.getDate());
+                const normalizedToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                const isToday = normalizedCurrentDate.toDateString() === normalizedToday.toDateString();
+                const isSelectable = normalizedCurrentDate >= normalizedEarliestBookingDate || isToday;
+                const isSelected = selectedConsultationDate && normalizedCurrentDate.toDateString() === new Date(selectedConsultationDate.getFullYear(), selectedConsultationDate.getMonth(), selectedConsultationDate.getDate()).toDateString();
+
+
+                let dayClasses = `p-2 rounded-md text-center cursor-pointer transition-colors duration-200`;
+                if (isSelected) {
+                    dayClasses += ` bg-blue-600 text-white`;
+                } else if (!isSelectable) {
+                    dayClasses += ` bg-gray-100 text-gray-400 cursor-not-allowed`;
+                } else {
+                    dayClasses += ` bg-white hover:bg-blue-100 text-gray-800`;
+                }
+
+                calendarHtml += `
+                    <div class="${dayClasses}" data-date="${currentDate.toISOString().split('T')[0]}" ${isSelectable ? 'data-selectable="true"' : 'data-selectable="false"'}>
+                        ${day}
+                    </div>
+                `;
+            }
+            calendarHtml += '</div>';
+            return calendarHtml;
+        }
+
+        function renderScheduleConsultationPage() {
+            const allPurchasableItems = getAllPurchasableItems();
+            const appContainer = document.getElementById('app-container');
+
+            // Calendar state
+            const now = new Date();
+            // Initialize with the current month/year or selected date's month/year
+            let currentCalendarMonth = selectedConsultationDate ? selectedConsultationDate.getMonth() : now.getMonth();
+            let currentCalendarYear = selectedConsultationDate ? selectedConsultationDate.getFullYear() : now.getFullYear();
+
+            const updateCalendarDisplay = () => {
+                const calendarContainer = document.getElementById('calendar-container');
+                if (calendarContainer) {
+                    calendarContainer.innerHTML = generateCalendar(currentCalendarYear, currentCalendarMonth);
+                    document.getElementById('current-month-year').textContent = new Date(currentCalendarYear, currentCalendarMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+
+                    document.querySelectorAll('#calendar-container div[data-selectable="true"]').forEach(dayDiv => {
+                        dayDiv.addEventListener('click', (event) => {
+                            selectedConsultationDate = new Date(event.target.dataset.date);
+                            // Re-render calendar to show selection
+                            updateCalendarDisplay();
+                            // Enable time slots
+                            document.getElementById('time-slot-selection').classList.remove('opacity-50', 'pointer-events-none');
+                        });
+                    });
+                }
+            };
+
+            const handleConsultationSubmit = (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('consultant-name').value;
+                const email = document.getElementById('consultant-email').value;
+                const phone = document.getElementById('consultant-phone').value;
+                const goals = document.getElementById('consultant-goals').value;
+                const industry = document.getElementById('consultant-industry').value;
+                const howHear = document.getElementById('consultant-how-hear').value;
+
+                if (!selectedConsultationDate || !selectedConsultationTime) {
+                    alertMessage("Please select both a date and a time slot for your consultation.");
+                    return;
+                }
+                if (goals.split(' ').length < 20) { // Reduced for demo brevity, originally 100
+                    alertMessage("Please describe your goals in at least 20 words.");
+                    return;
+                }
+
+                const selectedServices = Array.from(document.querySelectorAll('input[name="consultation-services"]:checked'))
+                                              .map(checkbox => {
+                                                  const item = allPurchasableItems.find(i => i.id === checkbox.value);
+                                                  return item ? `${item.name} (${item.type})` : `Unknown Item (ID: ${checkbox.value})`;
+                                              });
+
+                const consultationDetails = {
+                    name,
+                    email,
+                    phone,
+                    selectedServices,
+                    goals,
+                    industry,
+                    howHear,
+                    date: selectedConsultationDate.toDateString(),
+                    time: selectedConsultationTime,
+                    type: selectedConsultationType,
+                    cost: selectedConsultationType === 'priority' ? '$50.00' : 'Free'
+                };
+
+                console.log('Consultation Request:', consultationDetails);
+                alertMessage(`Thank you, ${name}! Your ${selectedConsultationType} consultation for ${selectedConsultationDate.toDateString()} at ${selectedConsultationTime} has been submitted. Confirmation will be sent via email within 24-72 hours.`);
+                event.target.reset(); // Clear form
+                selectedConsultationDate = null; // Reset calendar selection
+                selectedConsultationTime = null;
+                selectedConsultationType = 'standard';
+                document.getElementById('time-slot-selection').classList.add('opacity-50', 'pointer-events-none'); // Disable time slots
+                updateCalendarDisplay(); // Re-render calendar
+            };
+
+            appContainer.innerHTML = `
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        Schedule a Consultation
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-700 mb-6">
+                        Book a personalized 30-minute session with our experts. Select your areas of interest, choose a time, and tell us your goals.
+                    </p>
+
+                    <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-6 mb-8 text-left">
+                        <form id="consultation-form" class="space-y-6">
+                            <!-- Basic Info -->
+                            <div>
+                                <label for="consultant-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="consultant-name" name="name" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="Your Full Name">
+                            </div>
+                            <div>
+                                <label for="consultant-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="consultant-email" name="email" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label for="consultant-phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                                <input type="tel" id="consultant-phone" name="phone"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="(123) 456-7890">
+                            </div>
+
+                            <!-- Service Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Areas of Consultation Interest (Choose all that apply):</label>
+                                <div class="scrollable-content bg-white p-4 rounded-md border border-gray-300">
+                                    ${allPurchasableItems.map(item => `
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="consult-item-${item.id}" name="consultation-services" value="${item.id}"
+                                                class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded">
+                                            <label for="consult-item-${item.id}" class="ml-2 text-sm text-gray-700">${item.name} - ${item.type}</label>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Calendar and Time Slots -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Date & Time (30-minute consultation):</label>
+                                <div class="bg-white p-4 rounded-md border border-gray-300">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <button type="button" id="prev-month-btn" class="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+                                        </button>
+                                        <span id="current-month-year" class="text-lg font-semibold text-gray-800"></span>
+                                        <button type="button" id="next-month-btn" class="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                                        </button>
+                                    </div>
+                                    <div id="calendar-container">
+                                        <!-- Calendar will be rendered here -->
+                                    </div>
+                                </div>
+
+                                <div id="time-slot-selection" class="mt-4 p-4 bg-white rounded-md border border-gray-300 ${selectedConsultationDate ? '' : 'opacity-50 pointer-events-none'}">
+                                    <p class="text-sm font-medium text-gray-700 mb-2">Available Time Slots for Selected Date:</p>
+                                    <div class="flex flex-col sm:flex-row gap-3">
+                                        <label class="inline-flex items-center">
+                                            <input type="radio" name="time-slot" value="09:00-12:00" class="form-radio text-cyan-600 focus:ring-cyan-500" ${selectedConsultationTime === '09:00-12:00' ? 'checked' : ''}>
+                                            <span class="ml-2 text-gray-700">9:00 AM - 12:00 PM</span>
+                                        </label>
+                                        <label class="inline-flex items-center">
+                                            <input type="radio" name="time-slot" value="13:00-16:00" class="form-radio text-cyan-600 focus:ring-cyan-500" ${selectedConsultationTime === '13:00-16:00' ? 'checked' : ''}>
+                                            <span class="ml-2 text-gray-700">1:00 PM - 4:00 PM</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scheduling Type -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Scheduling Type:</label>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <label class="inline-flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-300 cursor-pointer hover:bg-gray-50 transition-colors duration-200 w-full sm:w-1/2">
+                                        <input type="radio" name="consultation-type" value="standard" class="form-radio text-green-600 focus:ring-green-500" ${selectedConsultationType === 'standard' ? 'checked' : ''}>
+                                        <span class="ml-2 text-gray-800 font-semibold">Standard Scheduling (Free)</span>
+                                    </label>
+                                    <label class="inline-flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-300 cursor-pointer hover:bg-gray-50 transition-colors duration-200 w-full sm:w-1/2">
+                                        <input type="radio" name="consultation-type" value="priority" class="form-radio text-red-600 focus:ring-red-500" ${selectedConsultationType === 'priority' ? 'checked' : ''}>
+                                        <span class="ml-2 text-gray-800 font-semibold">Priority Scheduling (Paid - $50.00)</span>
+                                    </label>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">
+                                    Priority scheduling ensures faster review of your consultation request.
+                                </p>
+                            </div>
+
+                            <!-- Questionnaire -->
+                            <div>
+                                <label for="consultant-goals" class="block text-sm font-medium text-gray-700">Goals for Consultation (Minimum 20 words)</label>
+                                <textarea id="consultant-goals" name="goals" rows="6" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="Briefly describe what you hope to achieve from this consultation..."></textarea>
+                            </div>
+                            <div>
+                                <label for="consultant-industry" class="block text-sm font-medium text-gray-700">Your Industry/Field (Optional)</label>
+                                <input type="text" id="consultant-industry" name="industry"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="e.g., Small Business Owner, Aspiring Musician, Student">
+                            </div>
+                            <div>
+                                <label for="consultant-how-hear" class="block text-sm font-medium text-gray-700">How did you hear about us? (Optional)</label>
+                                <input type="text" id="consultant-how-hear" name="howHear"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
+                                    placeholder="e.g., Google, Friend, Social Media">
+                            </div>
+
+                            <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-colors duration-300">
+                                Submit Consultation Request
+                            </button>
+                        </form>
+                    </div>
+
+                    <p class="text-lg text-gray-700 font-semibold mt-8">
+                        Your consultation request will be confirmed via email within <span class="text-cyan-700 font-bold">24-72 hours</span>.
+                        <br>Consultation duration is 30 minutes.
+                    </p>
+
+                    <button id="btnBackToHome"
+                        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300 mt-8">
+                        Back to Home
+                    </button>
+                </div>
+            `;
+            // Attach event listeners after content is rendered
+            document.getElementById('btnBackToHome').addEventListener('click', renderHomePage);
+            document.getElementById('consultation-form').addEventListener('submit', handleConsultationSubmit);
+
+            // Calendar navigation
+            document.getElementById('prev-month-btn').addEventListener('click', () => {
+                currentCalendarMonth--;
+                if (currentCalendarMonth < 0) {
+                    currentCalendarMonth = 11;
+                    currentCalendarYear--;
+                }
+                selectedConsultationDate = null; // Clear selection on month change
+                updateCalendarDisplay();
+            });
+            document.getElementById('next-month-btn').addEventListener('click', () => {
+                currentCalendarMonth++;
+                if (currentCalendarMonth > 11) {
+                    currentCalendarMonth = 0;
+                    currentCalendarYear++;
+                }
+                selectedConsultationDate = null; // Clear selection on month change
+                updateCalendarDisplay();
+            });
+
+            // Time slot selection
+            document.querySelectorAll('input[name="time-slot"]').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    selectedConsultationTime = event.target.value;
+                });
+            });
+
+            // Consultation type selection
+            document.querySelectorAll('input[name="consultation-type"]').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    selectedConsultationType = event.target.value;
+                });
+            });
+
+            // Initial calendar render
+            updateCalendarDisplay();
+
+            // Ensure time slots are disabled until a date is selected initially
+            if (!selectedConsultationDate) {
+                document.getElementById('time-slot-selection').classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                document.getElementById('time-slot-selection').classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+
+        // Initial render when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHomePage();
+            document.getElementById('accessibility-btn').addEventListener('click', renderAccessibilityPanel);
+        });
+    </script>
+</body>
+</html>
